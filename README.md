@@ -1,6 +1,6 @@
-# dialogmote-mikrofrontend
+# aktivitetskrav-mikrofrontend
 
-Mikrofrontend for Dialogmøter. Appen blir lastet opp til nav sin CDN ved push til main og har et manifest som deployes til Nais.
+Mikrofrontend for Aktivitetskrav. Appen blir lastet opp til nav sin CDN ved push til main og har et manifest som deployes til Nais.
 
 # Kom i gang
 

@@ -31,7 +31,7 @@ jobs:
         with:
           cdn-team-name: team-esyfo
           source: ./dist/
-          destination: "dialogmote-mikrofrontend"
+          destination: "aktivitetskrav-mikrofrontend"
 
       - name: Build and push docker image
         uses: nais/docker-build-push@v0

@@ -1,7 +1,7 @@
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: dialogmote-mikrofrontend
+  name: aktivitetskrav-mikrofrontend
   namespace: team-esyfo
   labels:
     team: team-esyfo
@@ -9,19 +9,19 @@ spec:
   image: {{ image }}
   port: 8080
   liveness:
-    path: /dialogmote-mikrofrontend/internal/isAlive
+    path: /aktivitetskrav-mikrofrontend/internal/isAlive
     initialDelay: 10
   readiness:
-    path: /dialogmote-mikrofrontend/internal/isReady
+    path: /aktivitetskrav-mikrofrontend/internal/isReady
     initialDelay: 10
   prometheus:
     enabled: true
-    path: /dialogmote-mikrofrontend/internal/metrics
+    path: /aktivitetskrav-mikrofrontend/internal/metrics
   replicas:
     min: 2
     max: 4
   ingresses:
-    - "https://www.nav.no/dialogmote-mikrofrontend"
+    - "https://www.nav.no/aktivitetskrav-mikrofrontend"
   resources:
     limits:
       cpu: "3"
