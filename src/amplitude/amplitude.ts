@@ -9,7 +9,7 @@ export const logEvent = (event: string, data?: Record<string, string>) => {
   }
 
   logAmplitudeEvent({
-    origin: "dialogmote-mikrofrontend",
+    origin: "aktivitetskrav-mikrofrontend",
     eventName: event, // Event-navn (påkrevd)
     eventData: data, // Event-data objekt (valgfri)
   });
