@@ -54,8 +54,16 @@ export const minutesToMillis = (minutes: number) => {
   return 1000 * 60 * minutes;
 };
 
-export function leggTilDagerPaDato(date: Date, days: number) {
+export function addDaysToDate(date: Date, daysToAdd: number) {
   const nyDato = new Date(date);
-  nyDato.setTime(nyDato.getTime() + days * MILLISEKUNDER_PER_DAG);
-  return new Date(nyDato);
+  const newTime = nyDato.getTime() + daysToAdd * MILLISEKUNDER_PER_DAG;
+  nyDato.setTime(newTime);
+  return nyDato;
+}
+
+export function subtractDaysFromDate(date: Date, daysToSubtract: number) {
+  const nyDato = new Date(date);
+  const newTime = nyDato.getTime() - daysToSubtract * MILLISEKUNDER_PER_DAG;
+  nyDato.setTime(newTime);
+  return nyDato;
 }
