@@ -15,9 +15,9 @@ export const getEnvironment = () => {
 
 type EnvUrl = { development: string; production: string; local: string };
 
-const ISDIALOGMOTE_API_URL: EnvUrl = {
-  local: "http://localhost:3000/api/v2/arbeidstaker/brev",
-  development: `https://www.intern.dev.nav.no/tms-min-side-proxy/syk/dialogmote/api/v2/arbeidstaker/brev`,
-  production: `https://www.nav.no/tms-min-side-proxy/syk/dialogmote/api/v2/arbeidstaker/brev`,
+const AKTIVITETSKRAV_API_URL: EnvUrl = {
+  local: "http://localhost:3000/api/aktivitetskrav/vurdering",
+  development: `https://www.intern.dev.nav.no/aktivitetskrav-backend/api/aktivitetskrav/vurdering`,
+  production: `https://www.nav.no/aktivitetskrav-backend/api/aktivitetskrav/vurdering`,
 };
-export const isdialogmoteApiUrl = ISDIALOGMOTE_API_URL[getEnvironment()];
+export const aktivitetskravApiUrl = AKTIVITETSKRAV_API_URL[getEnvironment()];

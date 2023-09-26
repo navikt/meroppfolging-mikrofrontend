@@ -1,8 +1,8 @@
 import { rest } from "msw";
+import { createVurdering } from "./fixtures/AktivitetskravFixture";
 
 export const handlers = [
-  //TODO: Lage et mockendepunkt for PDF
-  rest.get("*/api/v2/arbeidstaker/brev", (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json([]));
+  rest.get("*/api/aktivitetskrav/vurdering", (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(createVurdering("FORHANDSVARSEL")));
   }),
 ];
