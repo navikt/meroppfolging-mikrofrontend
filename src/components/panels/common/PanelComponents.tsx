@@ -1,6 +1,21 @@
 import styled from "styled-components";
-import { ExclamationmarkTriangleFillIcon } from "@navikt/aksel-icons";
+import {
+  CheckmarkCircleFillIcon,
+  ExclamationmarkTriangleFillIcon,
+  InformationSquareFillIcon,
+  XMarkOctagonFillIcon,
+} from "@navikt/aksel-icons";
 import { Heading, Tag } from "@navikt/ds-react";
+
+export const InfoIcon = styled(InformationSquareFillIcon)`
+  align-self: flex-start;
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  height: 24px;
+  background: radial-gradient(circle at 50% 57%, var(--a-surface-default) 32%, 0, transparent);
+  color: var(--ac-alert-icon-info-color, var(--a-icon-info));
+  box-shadow: var(--a-shadow-xsmall);
+`;
 
 export const YellowWarningIcon = styled(ExclamationmarkTriangleFillIcon)`
   align-self: flex-start;
@@ -12,12 +27,48 @@ export const YellowWarningIcon = styled(ExclamationmarkTriangleFillIcon)`
   box-shadow: var(--a-shadow-xsmall);
 `;
 
-export const StyledPanel = styled.div`
+export const SuccessIcon = styled(CheckmarkCircleFillIcon)`
+  align-self: flex-start;
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  height: 24px;
+  background: radial-gradient(circle at 50% 57%, var(--a-surface-default) 32%, 0, transparent);
+  color: var(--ac-alert-icon-success-color, var(--a-icon-success));
+  box-shadow: var(--a-shadow-xsmall);
+`;
+
+export const ErrorIcon = styled(XMarkOctagonFillIcon)`
+  align-self: flex-start;
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  height: 24px;
+  background: radial-gradient(circle at 50% 57%, var(--a-surface-default) 32%, 0, transparent);
+  color: var(--ac-alert-icon-error-color, var(--a-icon-danger));
+  box-shadow: var(--a-shadow-xsmall);
+`;
+
+export const BasePanel = styled.div`
   width: 100%;
   text-decoration: none;
   background-color: white;
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 0.5px 0 rgba(0, 0, 0, 0.18);
+`;
+
+export const ChevronPanel = styled(BasePanel)`
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: var(--a-shadow-small);
+
+    .navds-link-panel__chevron {
+      transform: translateX(4px);
+    }
+
+    .aktivitetskrav__title {
+      text-decoration: underline;
+    }
+  }
 `;
 
 export const HeadingRow = styled.div`

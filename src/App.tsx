@@ -5,6 +5,12 @@ import { get } from "./api/api";
 import useSWRImmutable from "swr/immutable";
 import { aktivitetskravApiUrl } from "./api/urls";
 import { ForhaandsvarselPanel } from "./components/panels/ForhaandsvarselPanel";
+import { InfoPanel } from "./components/panels/InfoPanel";
+import { UnderArbeidPanel } from "./components/panels/UnderArbeidPanel";
+import { UnntakPanel } from "./components/panels/UnntakPanel";
+import { OppfyltPanel } from "./components/panels/OppfyltPanel";
+import { StansPanel } from "./components/panels/StansPanel";
+import { IkkeAktuellPanel } from "./components/panels/IkkeAktuellPanel";
 
 function App() {
   const fetchAktivitetskravVurdering: Fetcher<AktivitetskravVurdering, string> = (path) => get(path);
@@ -13,23 +19,19 @@ function App() {
   if (aktivitetskravResponse.data) {
     switch (aktivitetskravResponse.data.status) {
       case "NY":
-        return <div>Ny: Infoside-info og lenke</div>;
+        return <InfoPanel />;
       case "AVVENT":
-        return <div>Avvent</div>;
+        return <UnderArbeidPanel />;
       case "UNNTAK":
-        return <div>UNNTAK</div>;
+        return <UnntakPanel arsak={aktivitetskravResponse.data.arsaker[0]} />;
       case "OPPFYLT":
-        return <div>OPPFYLT</div>;
+        return <OppfyltPanel arsak={aktivitetskravResponse.data.arsaker[0]} />;
       case "FORHANDSVARSEL":
         return <ForhaandsvarselPanel />;
       case "STANS":
-        return <div>STANS</div>;
-      case "IKKE_OPPFYLT":
-        return <div>IKKE_OPPFYLT</div>;
+        return <StansPanel />;
       case "IKKE_AKTUELL":
-        return <div>IKKE_AKTUELL</div>;
-      case "LUKKET":
-        return <div>LUKKET</div>;
+        return <IkkeAktuellPanel />;
     }
   }
 
