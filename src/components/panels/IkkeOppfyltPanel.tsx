@@ -1,7 +1,7 @@
 import React from "react";
 import { MikrofrontendPanel } from "./common/MikrofrontendPanel";
 
-export const StansPanel = () => {
+export const IkkeOppfyltPanel = () => {
   return (
     <MikrofrontendPanel
       headingText="Aktivitetskrav vurdert"

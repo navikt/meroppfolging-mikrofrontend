@@ -9,7 +9,7 @@ import { InfoPanel } from "./components/panels/InfoPanel";
 import { UnderArbeidPanel } from "./components/panels/UnderArbeidPanel";
 import { UnntakPanel } from "./components/panels/UnntakPanel";
 import { OppfyltPanel } from "./components/panels/OppfyltPanel";
-import { StansPanel } from "./components/panels/StansPanel";
+import { IkkeOppfyltPanel } from "./components/panels/IkkeOppfyltPanel";
 import { IkkeAktuellPanel } from "./components/panels/IkkeAktuellPanel";
 
 function App() {
@@ -28,8 +28,8 @@ function App() {
         return <OppfyltPanel arsak={aktivitetskravResponse.data.arsaker[0]} />;
       case "FORHANDSVARSEL":
         return <ForhaandsvarselPanel />;
-      case "STANS":
-        return <StansPanel />;
+      case "IKKE_OPPFYLT":
+        return <IkkeOppfyltPanel />;
       case "IKKE_AKTUELL":
         return <IkkeAktuellPanel />;
     }
