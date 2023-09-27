@@ -9,7 +9,6 @@ const aktivitetskravStatus = union([
   literal("STANS"),
   literal("IKKE_OPPFYLT"),
   literal("IKKE_AKTUELL"),
-  literal("LUKKET"),
 ]);
 
 const vurderingArsak = union([
