@@ -17,6 +17,6 @@ describe("<App />", () => {
   it("Displays under arbeid if status ny", () => {
     cy.mountWithStubs(<App />, { status: "NY" });
 
-    cy.get("#mikrofrontend__panel").contains("NAV vurderer aktivitetsplikten din");
+    cy.get("#mikrofrontend__linkPanel").contains("NAV vurderer aktivitetsplikten din");
   });
 });
