@@ -1,12 +1,12 @@
 import React from "react";
-import { VurderingArsak } from "../../schema/aktivitetskravVurderingSchema";
+import { OppfyltArsaker } from "../../schema/aktivitetskravVurderingSchema";
 import { MikrofrontendPanel } from "./common/MikrofrontendPanel";
 
 interface Props {
-  arsak: VurderingArsak;
+  arsak: OppfyltArsaker;
 }
 
-const getBegrunnelseText = (arsak: VurderingArsak) => {
+const getBegrunnelseText = (arsak: OppfyltArsaker) => {
   switch (arsak) {
     case "FRISKMELDT":
       return "NAV vurderer at du oppfyller aktivitetsplikten siden du er friskmeldt";

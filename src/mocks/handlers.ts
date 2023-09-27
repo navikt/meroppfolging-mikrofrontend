@@ -1,8 +1,10 @@
 import { rest } from "msw";
-import { createVurdering } from "./fixtures/AktivitetskravFixture";
+import { AktivitetskravVurdering } from "../schema/aktivitetskravVurderingSchema";
+
+const vurderingResponse: AktivitetskravVurdering = { status: "FORHANDSVARSEL", journalpostId: "123" };
 
 export const handlers = [
   rest.get("*/api/aktivitetskrav/vurdering", (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(createVurdering("UNNTAK", ["MEDISINSKE_GRUNNER"])));
+    return res(ctx.status(200), ctx.json(vurderingResponse));
   }),
 ];

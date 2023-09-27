@@ -17,17 +17,18 @@ import { aktivitetskravUrl } from "../../../api/urls";
 import { ChevronRightIcon } from "@navikt/aksel-icons";
 
 interface Props {
+  href?: string;
   headingText: string;
   alertStyle: "info" | "success" | "warning" | "error";
   bodyText: string;
   children?: ReactNode;
 }
 
-export const MikrofrontendLinkPanel = ({ headingText, alertStyle, bodyText, children }: Props) => {
+export const MikrofrontendLinkPanel = ({ href, headingText, alertStyle, bodyText, children }: Props) => {
   return (
     <ChevronPanel
       onClick={() => {
-        window.open(aktivitetskravUrl);
+        window.open(href || aktivitetskravUrl);
       }}
     >
       <HeadingRow>

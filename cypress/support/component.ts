@@ -1,13 +1,17 @@
 import "./commands";
 import { mount, MountReturn } from "cypress/react18";
-import { StubResponses, mountWithStubs } from "../utils/mountWithMocks";
+import { mountWithStubs } from "../utils/mountWithMocks";
+import { AktivitetskravVurdering } from "../../src/schema/aktivitetskravVurderingSchema";
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Cypress {
     interface Chainable {
       mount: typeof mount;
-      mountWithStubs: (componentUnderTest: JSX.Element, stubs: StubResponses) => Cypress.Chainable<MountReturn>;
+      mountWithStubs: (
+        componentUnderTest: JSX.Element,
+        vurdering: AktivitetskravVurdering
+      ) => Cypress.Chainable<MountReturn>;
     }
   }
 }

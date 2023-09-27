@@ -27,5 +27,15 @@ const AKTIVITETSKRAV_URL: EnvUrl = {
   production: `https://www.nav.no/syk/info/aktivitetsplikt`,
 };
 
+const JOURNALPOST_PAGE_URL: EnvUrl = {
+  local: "http://localhost:3000/dokumentarkiv/tema/OPP",
+  development: `https://www.intern.dev.nav.no/dokumentarkiv/tema/OPP`,
+  production: `https://www.nav.no/dokumentarkiv/tema/OPP`,
+};
+
 export const aktivitetskravApiUrl = AKTIVITETSKRAV_API_URL[getEnvironment()];
 export const aktivitetskravUrl = AKTIVITETSKRAV_URL[getEnvironment()];
+export const journalpostPageUrl = (journalpostId: string) => {
+  const baseUrl = JOURNALPOST_PAGE_URL[getEnvironment()];
+  return `${baseUrl}/${journalpostId}`;
+};

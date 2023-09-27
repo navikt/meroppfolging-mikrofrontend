@@ -23,11 +23,11 @@ function App() {
       case "AVVENT":
         return <UnderArbeidPanel />;
       case "UNNTAK":
-        return <UnntakPanel arsak={aktivitetskravResponse.data.arsaker[0]} />;
+        return <UnntakPanel arsak={aktivitetskravResponse.data.arsaker} />;
       case "OPPFYLT":
-        return <OppfyltPanel arsak={aktivitetskravResponse.data.arsaker[0]} />;
+        return <OppfyltPanel arsak={aktivitetskravResponse.data.arsaker} />;
       case "FORHANDSVARSEL":
-        return <ForhaandsvarselPanel />;
+        return <ForhaandsvarselPanel journalpostId={aktivitetskravResponse.data.journalpostId} />;
       case "IKKE_OPPFYLT":
         return <IkkeOppfyltPanel />;
       case "IKKE_AKTUELL":

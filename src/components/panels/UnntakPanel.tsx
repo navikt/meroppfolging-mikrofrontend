@@ -1,12 +1,12 @@
 import React from "react";
-import { VurderingArsak } from "../../schema/aktivitetskravVurderingSchema";
 import { MikrofrontendPanel } from "./common/MikrofrontendPanel";
+import { UnntakArsaker } from "../../schema/aktivitetskravVurderingSchema";
 
 interface Props {
-  arsak: VurderingArsak;
+  arsak: UnntakArsaker;
 }
 
-const getBegrunnelseText = (arsak: VurderingArsak) => {
+const getBegrunnelseText = (arsak: UnntakArsaker) => {
   switch (arsak) {
     case "MEDISINSKE_GRUNNER":
       return "NAV vurderer at du er unntatt fra aktivitetsplikten på grunn av medisinske opplysninger";
