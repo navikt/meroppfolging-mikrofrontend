@@ -29,7 +29,7 @@ export const MikrofrontendLinkPanel = ({ href, headingText, alertStyle, bodyText
     <ChevronPanel
       id="mikrofrontend__linkPanel"
       onClick={() => {
-        window.open(href || aktivitetskravUrl);
+        window.location.href = href || aktivitetskravUrl;
       }}
     >
       <HeadingRow>

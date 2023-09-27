@@ -22,13 +22,13 @@ const AKTIVITETSKRAV_API_URL: EnvUrl = {
 };
 
 const AKTIVITETSKRAV_URL: EnvUrl = {
-  local: "https://demo.ekstern.dev.nav.no/syk/info/aktivitetsplikt",
+  local: "http://localhost:3000/?aktivitetsplikt-url",
   development: `https://www.ekstern.dev.nav.no/syk/info/aktivitetsplikt`,
   production: `https://www.nav.no/syk/info/aktivitetsplikt`,
 };
 
 const JOURNALPOST_PAGE_URL: EnvUrl = {
-  local: "http://localhost:3000/dokumentarkiv/tema/OPP",
+  local: "http://localhost:3000/?journalpost-url",
   development: `https://www.intern.dev.nav.no/dokumentarkiv/tema/OPP`,
   production: `https://www.nav.no/dokumentarkiv/tema/OPP`,
 };
