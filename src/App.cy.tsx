@@ -14,9 +14,9 @@ describe("<App />", () => {
     cy.get("#mikrofrontend__panel").contains("Mulig stans av sykepenger");
   });
 
-  it("Displays linkpanel if status ny", () => {
+  it("Displays under arbeid if status ny", () => {
     cy.mountWithStubs(<App />, { status: "NY" });
 
-    cy.get("#mikrofrontend__linkPanel").contains("Info om aktivitetsplikt");
+    cy.get("#mikrofrontend__panel").contains("NAV vurderer aktivitetsplikten din");
   });
 });
