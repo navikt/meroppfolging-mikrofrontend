@@ -6,7 +6,7 @@ export const IkkeAktuellPanel = () => {
     <MikrofrontendPanel
       headingText="Aktivitetsplikten er ikke relevant for deg"
       bodyText="NAV vurderer at aktivitetsplikten ikke er aktuell for deg"
-      alertStyle="success"
+      alertStyle="info"
     />
   );
 };

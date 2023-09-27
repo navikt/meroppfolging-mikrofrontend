@@ -6,7 +6,7 @@ export const IkkeOppfyltPanel = () => {
     <MikrofrontendPanel
       headingText="Aktivitetskrav vurdert"
       bodyText="NAV har vurdert aktivitetskravet ditt, du vil motta mer informasjon snarlig"
-      alertStyle="success"
+      alertStyle="warning"
     />
   );
 };

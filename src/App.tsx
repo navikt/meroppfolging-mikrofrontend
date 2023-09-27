@@ -5,7 +5,6 @@ import { get } from "./api/api";
 import useSWRImmutable from "swr/immutable";
 import { aktivitetskravApiUrl } from "./api/urls";
 import { ForhaandsvarselPanel } from "./components/panels/ForhaandsvarselPanel";
-import { InfoPanel } from "./components/panels/InfoPanel";
 import { UnderArbeidPanel } from "./components/panels/UnderArbeidPanel";
 import { UnntakPanel } from "./components/panels/UnntakPanel";
 import { OppfyltPanel } from "./components/panels/OppfyltPanel";
@@ -19,7 +18,7 @@ function App() {
   if (aktivitetskravResponse.data) {
     switch (aktivitetskravResponse.data.status) {
       case "NY":
-        return <InfoPanel />;
+        return <UnderArbeidPanel />;
       case "AVVENT":
         return <UnderArbeidPanel />;
       case "UNNTAK":

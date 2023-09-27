@@ -1,6 +1,7 @@
 import React from "react";
 import { MikrofrontendLinkPanel } from "./common/MikrofrontendLinkPanel";
 
+//Dette vil bli brukt for å vise info-siden på før-kandidat status som kommer
 export const InfoPanel = () => {
   return (
     <MikrofrontendLinkPanel
