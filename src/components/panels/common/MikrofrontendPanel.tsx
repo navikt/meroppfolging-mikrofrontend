@@ -22,7 +22,7 @@ interface Props {
 
 export const MikrofrontendPanel = ({ headingText, alertStyle, bodyText, children }: Props) => {
   return (
-    <BasePanel>
+    <BasePanel id="mikrofrontend__panel">
       <HeadingRow>
         <HeadingSpacing size={"small"} level={"2"}>
           {headingText}

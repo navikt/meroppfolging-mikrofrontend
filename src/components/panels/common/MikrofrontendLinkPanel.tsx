@@ -27,6 +27,7 @@ interface Props {
 export const MikrofrontendLinkPanel = ({ href, headingText, alertStyle, bodyText, children }: Props) => {
   return (
     <ChevronPanel
+      id="mikrofrontend__linkPanel"
       onClick={() => {
         window.open(href || aktivitetskravUrl);
       }}
