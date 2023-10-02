@@ -13,7 +13,7 @@ export const ForhaandsvarselPanel = ({ journalpostId }: Props) => {
       //Skal normalt ikke skje, men for å ha en fallback dersom journalføring gikk galt eller noe.
       <MikrofrontendPanel
         headingText="Mulig stans av sykepenger"
-        bodyText="NAV vurderer at du ikke ikke kan unntas aktivitetsplikten. Du vil motta et brev om dette i Mine Saker"
+        bodyText="NAV vurderer at du ikke kan unntas aktivitetsplikten. Du vil motta et brev om dette i Mine Saker"
         alertStyle="error"
       />
     );
@@ -23,7 +23,7 @@ export const ForhaandsvarselPanel = ({ journalpostId }: Props) => {
     <MikrofrontendLinkPanel
       href={journalpostPageUrl(journalpostId)}
       headingText="Mulig stans av sykepenger"
-      bodyText="NAV vurderer at du ikke ikke kan unntas aktivitetsplikten"
+      bodyText="NAV vurderer at du ikke kan unntas aktivitetsplikten"
       alertStyle="error"
     />
   );

@@ -14,20 +14,15 @@ const getBegrunnelseText = (arsak: OppfyltArsaker) => {
       return "NAV vurderer at du oppfyller aktivitetsplikten siden du er i gradert arbeid";
     case "TILTAK":
       return "NAV vurderer at du oppfyller aktivitetsplikten siden du har gjort nødvendige tiltak";
-    default:
-      return null;
   }
 };
 
 export const OppfyltPanel = ({ arsak }: Props) => {
-  const begrunnelseText = getBegrunnelseText(arsak);
-
-  if (!begrunnelseText) {
-    //bør kanskje logge feil også, skal ikke kunne skje
-    return null;
-  }
-
   return (
-    <MikrofrontendPanel headingText="Aktivitetsplikten er oppfylt" bodyText={begrunnelseText} alertStyle="success" />
+    <MikrofrontendPanel
+      headingText="Aktivitetsplikten er oppfylt"
+      bodyText={getBegrunnelseText(arsak)}
+      alertStyle="success"
+    />
   );
 };
