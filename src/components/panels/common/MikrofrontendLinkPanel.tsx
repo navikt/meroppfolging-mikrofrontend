@@ -35,7 +35,7 @@ export const MikrofrontendLinkPanel = ({ href, headingText, alertStyle, bodyText
       }}
     >
       <HeadingRow>
-        <HeadingSpacing size={"small"} level={"2"}>
+        <HeadingSpacing size={"small"} level={"2"} className="aktivitetskrav__title">
           {headingText}
         </HeadingSpacing>
         <ChevronSection>
