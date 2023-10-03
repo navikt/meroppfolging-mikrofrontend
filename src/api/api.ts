@@ -5,7 +5,7 @@ export const get = async (path: string) => {
   });
 
   if (!response.ok) {
-    throw new Error("Fetch request failed");
+    throw new Error("Error fetching data");
   }
 
   return await response.json();

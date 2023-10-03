@@ -1,6 +1,7 @@
 import React from "react";
 import App from "./App";
 import styled from "styled-components";
+import { ErrorBoundary } from "react-error-boundary";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -11,9 +12,11 @@ const Wrapper = styled.div`
 
 const Mikrofrontend = () => {
   return (
-    <Wrapper>
-      <App />
-    </Wrapper>
+    <ErrorBoundary fallback={<></>}>
+      <Wrapper>
+        <App />
+      </Wrapper>
+    </ErrorBoundary>
   );
 };
 
