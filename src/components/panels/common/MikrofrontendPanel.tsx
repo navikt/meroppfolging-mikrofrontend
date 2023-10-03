@@ -1,9 +1,10 @@
 import { HeadingSpacing } from "../../typography/typography";
 import { Column } from "../../columns/Column";
-import React, { ReactNode } from "react";
+import React from "react";
 import {
   AlertContainer,
   BasePanel,
+  ContainedTag,
   ErrorIcon,
   HeadingRow,
   InfoIcon,
@@ -13,14 +14,19 @@ import {
   YellowWarningIcon,
 } from "./PanelComponents";
 
+export interface TagMeta {
+  text: string;
+  variant: "info-moderate" | "success-moderate" | "warning-moderate" | "error-moderate";
+}
+
 interface Props {
   headingText: string;
   alertStyle: "info" | "success" | "warning" | "error";
   bodyText: string;
-  children?: ReactNode;
+  tag?: TagMeta;
 }
 
-export const MikrofrontendPanel = ({ headingText, alertStyle, bodyText, children }: Props) => {
+export const MikrofrontendPanel = ({ headingText, alertStyle, bodyText, tag }: Props) => {
   return (
     <BasePanel id="mikrofrontend__panel">
       <HeadingRow>
@@ -39,7 +45,11 @@ export const MikrofrontendPanel = ({ headingText, alertStyle, bodyText, children
           <MainContentText size="medium" level={"3"}>
             {bodyText}
           </MainContentText>
-          {children}
+          {tag && (
+            <ContainedTag size={"small"} variant={tag.variant}>
+              {tag.text}
+            </ContainedTag>
+          )}
         </Column>
       </MainContentRow>
     </BasePanel>

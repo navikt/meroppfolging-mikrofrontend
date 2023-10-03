@@ -1,10 +1,11 @@
 import { HeadingSpacing } from "../../typography/typography";
 import { Column } from "../../columns/Column";
-import React, { ReactNode } from "react";
+import React from "react";
 import {
   AlertContainer,
   ChevronPanel,
   ChevronSection,
+  ContainedTag,
   ErrorIcon,
   HeadingRow,
   InfoIcon,
@@ -15,16 +16,17 @@ import {
 } from "./PanelComponents";
 import { aktivitetskravUrl } from "../../../api/urls";
 import { ChevronRightIcon } from "@navikt/aksel-icons";
+import { TagMeta } from "./MikrofrontendPanel";
 
 interface Props {
   href?: string;
   headingText: string;
   alertStyle: "info" | "success" | "warning" | "error";
   bodyText: string;
-  children?: ReactNode;
+  tag?: TagMeta;
 }
 
-export const MikrofrontendLinkPanel = ({ href, headingText, alertStyle, bodyText, children }: Props) => {
+export const MikrofrontendLinkPanel = ({ href, headingText, alertStyle, bodyText, tag }: Props) => {
   return (
     <ChevronPanel
       id="mikrofrontend__linkPanel"
@@ -51,7 +53,11 @@ export const MikrofrontendLinkPanel = ({ href, headingText, alertStyle, bodyText
           <MainContentText size="medium" level={"3"}>
             {bodyText}
           </MainContentText>
-          {children}
+          {tag && (
+            <ContainedTag size={"small"} variant={tag.variant}>
+              {tag.text}
+            </ContainedTag>
+          )}
         </Column>
       </MainContentRow>
     </ChevronPanel>
