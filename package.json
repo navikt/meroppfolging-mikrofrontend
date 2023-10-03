@@ -13,6 +13,8 @@
     "cypress:run": "cypress run --component"
   },
   "dependencies": {
+    "@grafana/faro-web-sdk": "^1.2.1",
+    "@grafana/faro-web-tracing": "^1.2.1",
     "@navikt/aksel-icons": "4.1.6",
     "@navikt/ds-react": "4.1.6",
     "@navikt/nav-dekoratoren-moduler": "^2.0.1",
