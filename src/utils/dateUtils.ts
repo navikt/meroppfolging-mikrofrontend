@@ -11,6 +11,15 @@ export const getLongDateFormat = (date: string | number | Date) => {
   return dateObject.toLocaleDateString("nb-NO", options);
 };
 
+export const getShortDateFormat = (date: string | number | Date) => {
+  const dateObject = new Date(date);
+
+  const options: Intl.DateTimeFormatOptions = {
+    dateStyle: "short",
+  };
+  return dateObject.toLocaleDateString("nb-NO", options);
+};
+
 export const getFormattedMonth = (date: string | number | Date) => {
   const dateObject = new Date(date);
 

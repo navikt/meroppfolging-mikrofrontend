@@ -1,38 +1,40 @@
-import {
-  AlertContainer,
-  HeadingRow,
-  MainContentRow,
-  MainContentText,
-  StyledPanel,
-  YellowWarningIcon,
-} from "./PanelComponents";
-import { HeadingSpacing } from "../typography/typography";
-import { Column } from "../columns/Column";
-import { Button } from "@navikt/ds-react";
-import { logEvent } from "../../amplitude/amplitude";
 import React from "react";
+import { MikrofrontendLinkPanel } from "./common/MikrofrontendLinkPanel";
+import { journalpostPageUrl } from "../../api/urls";
+import { MikrofrontendPanel } from "./common/MikrofrontendPanel";
+import { getShortDateFormat } from "../../utils/dateUtils";
 
-export const ForhaandsvarselPanel = () => {
+interface Props {
+  journalpostId?: string;
+  fristDato: string;
+}
+
+export const ForhaandsvarselPanel = ({ journalpostId, fristDato }: Props) => {
+  if (!journalpostId) {
+    return (
+      //Skal normalt ikke skje, men for å ha en fallback dersom journalføring gikk galt eller noe.
+      <MikrofrontendPanel
+        headingText="Mulig stans av sykepenger"
+        bodyText={`NAV vurderer å stanse sykepengene dine. Du vil motta et brev om dette i Mine Saker`}
+        alertStyle="error"
+        tag={{
+          variant: "error-moderate",
+          text: `Svarfrist: ${getShortDateFormat(fristDato)}`,
+        }}
+      />
+    );
+  }
+
   return (
-    <StyledPanel>
-      <HeadingRow>
-        <HeadingSpacing size={"small"} level={"2"}>
-          Varsel om stans av sykepenger
-        </HeadingSpacing>
-        <AlertContainer>
-          <YellowWarningIcon />
-        </AlertContainer>
-      </HeadingRow>
-      <MainContentRow>
-        <Column gap={"1rem"}>
-          <MainContentText size="medium" level={"3"}>
-            Vi har vurdert at du ikke oppfyller vilkårene for å unntas aktivitetsplikten
-          </MainContentText>
-          <Button variant="secondary" onClick={() => logEvent("Forhåndsvarsel: Åpner PDF")}>
-            Les brevet fra NAV
-          </Button>
-        </Column>
-      </MainContentRow>
-    </StyledPanel>
+    <MikrofrontendLinkPanel
+      href={journalpostPageUrl(journalpostId)}
+      headingText="Mulig stans av sykepenger"
+      bodyText="NAV vurderer å stanse sykepengene dine"
+      alertStyle="error"
+      tag={{
+        variant: "error-moderate",
+        text: `Svarfrist: ${getShortDateFormat(fristDato)}`,
+      }}
+    />
   );
 };

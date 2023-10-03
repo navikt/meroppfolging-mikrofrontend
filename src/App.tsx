@@ -1,35 +1,35 @@
 import React from "react";
+import { ForhaandsvarselPanel } from "./components/panels/ForhaandsvarselPanel";
 import { Fetcher } from "swr";
 import { AktivitetskravVurdering } from "./schema/aktivitetskravVurderingSchema";
-import { get } from "./api/api";
 import useSWRImmutable from "swr/immutable";
 import { aktivitetskravApiUrl } from "./api/urls";
-import { ForhaandsvarselPanel } from "./components/panels/ForhaandsvarselPanel";
+import { UnderArbeidPanel } from "./components/panels/UnderArbeidPanel";
+import { UnntakPanel } from "./components/panels/UnntakPanel";
+import { OppfyltPanel } from "./components/panels/OppfyltPanel";
+import { IkkeAktuellPanel } from "./components/panels/IkkeAktuellPanel";
+import { get } from "./api/api";
 
 function App() {
   const fetchAktivitetskravVurdering: Fetcher<AktivitetskravVurdering, string> = (path) => get(path);
-  const aktivitetskravResponse = useSWRImmutable(aktivitetskravApiUrl, fetchAktivitetskravVurdering);
+  const { data, error } = useSWRImmutable(aktivitetskravApiUrl, fetchAktivitetskravVurdering);
 
-  if (aktivitetskravResponse.data) {
-    switch (aktivitetskravResponse.data.status) {
+  if (error) {
+    throw error;
+  }
+
+  if (data) {
+    switch (data.status) {
       case "NY":
-        return <div>Ny: Infoside-info og lenke</div>;
-      case "AVVENT":
-        return <div>Avvent</div>;
+        return <UnderArbeidPanel />;
       case "UNNTAK":
-        return <div>UNNTAK</div>;
+        return <UnntakPanel arsak={data.arsaker} sistVurdert={data.sistVurdert} />;
       case "OPPFYLT":
-        return <div>OPPFYLT</div>;
+        return <OppfyltPanel arsak={data.arsaker} sistVurdert={data.sistVurdert} />;
       case "FORHANDSVARSEL":
-        return <ForhaandsvarselPanel />;
-      case "STANS":
-        return <div>STANS</div>;
-      case "IKKE_OPPFYLT":
-        return <div>IKKE_OPPFYLT</div>;
+        return <ForhaandsvarselPanel journalpostId={data.journalpostId} fristDato={data.fristDato} />;
       case "IKKE_AKTUELL":
-        return <div>IKKE_AKTUELL</div>;
-      case "LUKKET":
-        return <div>LUKKET</div>;
+        return <IkkeAktuellPanel sistVurdert={data.sistVurdert} />;
     }
   }
 
