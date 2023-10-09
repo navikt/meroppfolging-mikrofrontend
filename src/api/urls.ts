@@ -21,10 +21,10 @@ const FARO_TELEMETRY_URL: EnvUrl = {
   production: "https://telemetry.nav.no/collect",
 };
 
-const AKTIVITETSKRAV_API_URL: EnvUrl = {
-  local: "http://localhost:3000/api/aktivitetskrav/vurdering",
-  development: `https://www.intern.dev.nav.no/aktivitetskrav-backend/api/aktivitetskrav/vurdering`,
-  production: `https://www.nav.no/aktivitetskrav-backend/api/aktivitetskrav/vurdering`,
+const ESYFO_PROXY_API_URL: EnvUrl = {
+  local: "/api/aktivitetsplikt",
+  development: `https://www.intern.dev.nav.no/esyfo-proxy/api/aktivitetsplikt`,
+  production: `https://www.nav.no/esyfo-proxy/api/aktivitetsplikt`,
 };
 
 const AKTIVITETSKRAV_URL: EnvUrl = {
@@ -39,7 +39,7 @@ const JOURNALPOST_PAGE_URL: EnvUrl = {
   production: `https://www.nav.no/dokumentarkiv/tema/OPP`,
 };
 
-export const aktivitetskravApiUrl = AKTIVITETSKRAV_API_URL[getEnvironment()];
+export const proxyApiUrl = ESYFO_PROXY_API_URL[getEnvironment()];
 export const aktivitetskravUrl = AKTIVITETSKRAV_URL[getEnvironment()];
 export const journalpostPageUrl = (journalpostId: string) => {
   const baseUrl = JOURNALPOST_PAGE_URL[getEnvironment()];
