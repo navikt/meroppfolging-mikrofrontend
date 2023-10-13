@@ -3,16 +3,16 @@ import { ForhaandsvarselPanel } from "./components/panels/ForhaandsvarselPanel";
 import { Fetcher } from "swr";
 import { AktivitetskravVurdering } from "./schema/aktivitetskravVurderingSchema";
 import useSWRImmutable from "swr/immutable";
-import { aktivitetskravApiUrl } from "./api/urls";
 import { UnderArbeidPanel } from "./components/panels/UnderArbeidPanel";
 import { UnntakPanel } from "./components/panels/UnntakPanel";
 import { OppfyltPanel } from "./components/panels/OppfyltPanel";
 import { IkkeAktuellPanel } from "./components/panels/IkkeAktuellPanel";
 import { get } from "./api/api";
+import { proxyApiUrl } from "./api/urls";
 
 function App() {
   const fetchAktivitetskravVurdering: Fetcher<AktivitetskravVurdering, string> = (path) => get(path);
-  const { data, error } = useSWRImmutable(aktivitetskravApiUrl, fetchAktivitetskravVurdering);
+  const { data, error } = useSWRImmutable(proxyApiUrl, fetchAktivitetskravVurdering);
 
   if (error) {
     throw error;
