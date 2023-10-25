@@ -11,12 +11,12 @@ const oppfyltArsaker = z.union([literal("FRISKMELDT"), literal("GRADERT"), liter
 export const aktivitetskravVurderingSchema = union([
   object({
     status: z.literal("UNNTAK"),
-    arsaker: unntakArsaker,
+    arsaker: z.array(unntakArsaker),
     sistVurdert: string().datetime(),
   }),
   object({
     status: z.literal("OPPFYLT"),
-    arsaker: oppfyltArsaker,
+    arsaker: z.array(oppfyltArsaker),
     sistVurdert: string().datetime(),
   }),
   object({

@@ -8,13 +8,13 @@ const nyKandidatVurdering: AktivitetskravVurdering = {
 const unntakVurdering: AktivitetskravVurdering = {
   status: "UNNTAK",
   sistVurdert: subtractDaysFromDate(new Date(), 5).toISOString(),
-  arsaker: "MEDISINSKE_GRUNNER",
+  arsaker: ["MEDISINSKE_GRUNNER"],
 };
 
 const oppfyltVurdering: AktivitetskravVurdering = {
   status: "OPPFYLT",
   sistVurdert: subtractDaysFromDate(new Date(), 5).toISOString(),
-  arsaker: "TILTAK",
+  arsaker: ["TILTAK"],
 };
 
 const ikkeAktuellVurdering: AktivitetskravVurdering = {
