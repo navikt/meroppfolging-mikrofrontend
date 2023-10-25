@@ -23,9 +23,9 @@ function App() {
       case "NY":
         return <UnderArbeidPanel />;
       case "UNNTAK":
-        return <UnntakPanel arsak={data.arsaker} sistVurdert={data.sistVurdert} />;
+        return <UnntakPanel arsak={data.arsaker[0]} sistVurdert={data.sistVurdert} />;
       case "OPPFYLT":
-        return <OppfyltPanel arsak={data.arsaker} sistVurdert={data.sistVurdert} />;
+        return <OppfyltPanel arsak={data.arsaker[0]} sistVurdert={data.sistVurdert} />;
       case "FORHANDSVARSEL":
         return <ForhaandsvarselPanel journalpostId={data.journalpostId} fristDato={data.fristDato} />;
       case "IKKE_AKTUELL":
