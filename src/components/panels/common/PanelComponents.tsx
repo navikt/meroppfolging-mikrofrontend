@@ -98,7 +98,7 @@ export const MainContentRow = styled.div`
 `;
 
 export const MainContentText = styled(Heading)`
-  font-weight: var(--a-font-weight-regular);
+  font-weight: var(--a-font-weight-regular) !important;
 `;
 
 export const ChevronSection = styled.div`
