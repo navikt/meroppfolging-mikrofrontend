@@ -24,7 +24,7 @@ export const OppfyltPanel = ({ arsak, sistVurdert }: Props) => {
 
   return (
     <MikrofrontendPanel
-      headingText="Aktivitetsplikten er oppfylt"
+      headingText="NAV har vurdert aktivitetsplikten din"
       bodyText={begrunnelseText}
       alertStyle="success"
       tag={{

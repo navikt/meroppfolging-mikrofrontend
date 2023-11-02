@@ -21,6 +21,7 @@ function App() {
   if (data) {
     switch (data.status) {
       case "NY":
+      case "AVVENTER":
         return <UnderArbeidPanel />;
       case "UNNTAK":
         return <UnntakPanel arsak={data.arsaker[0]} sistVurdert={data.sistVurdert} />;

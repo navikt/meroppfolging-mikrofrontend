@@ -24,7 +24,7 @@ export const UnntakPanel = ({ arsak, sistVurdert }: Props) => {
 
   return (
     <MikrofrontendPanel
-      headingText="Unntak fra aktivitetsplikten"
+      headingText="NAV har vurdert aktivitetsplikten din"
       bodyText={begrunnelseText}
       alertStyle="success"
       tag={{

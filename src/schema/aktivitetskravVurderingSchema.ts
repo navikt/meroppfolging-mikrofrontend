@@ -23,6 +23,9 @@ export const aktivitetskravVurderingSchema = union([
     status: z.literal("NY"),
   }),
   object({
+    status: z.literal("AVVENTER"),
+  }),
+  object({
     status: z.literal("FORHANDSVARSEL"),
     journalpostId: string().optional(),
     sistVurdert: string().datetime(),

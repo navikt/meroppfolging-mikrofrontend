@@ -9,7 +9,7 @@ interface Props {
 export const IkkeAktuellPanel = ({ sistVurdert }: Props) => {
   return (
     <MikrofrontendPanel
-      headingText="Aktivitetsplikten er ikke relevant for deg"
+      headingText="NAV har vurdert aktivitetsplikten din"
       bodyText="NAV vurderer at aktivitetsplikten ikke er aktuell for deg"
       alertStyle="info"
       tag={{
