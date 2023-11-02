@@ -3,6 +3,7 @@ import { MikrofrontendLinkPanel } from "./common/MikrofrontendLinkPanel";
 import { journalpostPageUrl } from "../../api/urls";
 import { MikrofrontendPanel, TagMeta } from "./common/MikrofrontendPanel";
 import { getShortDateFormat } from "../../utils/dateUtils";
+import { vurdererHeadingText } from "../../commonTexts";
 
 interface Props {
   journalpostId?: string;
@@ -21,7 +22,7 @@ export const ForhaandsvarselPanel = ({ journalpostId, fristDato }: Props) => {
     return (
       //Skal normalt ikke skje, men for å ha en fallback dersom journalføring gikk galt eller noe.
       <MikrofrontendPanel
-        headingText="NAV vurderer aktivitetsplikten din"
+        headingText={vurdererHeadingText}
         bodyText={`NAV vurderer å stanse sykepengene dine. Du vil motta et brev om dette i Mine Saker`}
         alertStyle="warning"
         tag={tagInfo}
@@ -32,7 +33,7 @@ export const ForhaandsvarselPanel = ({ journalpostId, fristDato }: Props) => {
   return (
     <MikrofrontendLinkPanel
       href={journalpostPageUrl(journalpostId)}
-      headingText="NAV vurderer aktivitetsplikten din"
+      headingText={vurdererHeadingText}
       bodyText="NAV vurderer å stanse sykepengene dine"
       alertStyle="warning"
       tag={tagInfo}

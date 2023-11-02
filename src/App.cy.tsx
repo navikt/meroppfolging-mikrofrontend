@@ -1,6 +1,7 @@
 import React from "react";
 import App from "./App";
 import { addDaysToDate } from "./utils/dateUtils";
+import { vurdererHeadingText } from "./commonTexts";
 
 describe("<App />", () => {
   it("Displays linkpanel for forhåndsvarsel if journalpostid is present", () => {
@@ -21,12 +22,12 @@ describe("<App />", () => {
       fristDato: addDaysToDate(new Date(), 14).toISOString(),
     });
 
-    cy.get("#mikrofrontend__panel").contains("NAV vurderer å stanse sykepengene dine");
+    cy.get("#mikrofrontend__panel").contains(vurdererHeadingText);
   });
 
   it("Displays under arbeid if status ny", () => {
     cy.mountWithStubs(<App />, { status: "NY" });
 
-    cy.get("#mikrofrontend__linkPanel").contains("NAV vurderer aktivitetsplikten din");
+    cy.get("#mikrofrontend__linkPanel").contains(vurdererHeadingText);
   });
 });
