@@ -12,7 +12,7 @@ interface Props {
 export const ForhaandsvarselPanel = ({ journalpostId, fristDato }: Props) => {
   const tagInfo: TagMeta | undefined = fristDato
     ? {
-        variant: "warning-moderate",
+        variant: new Date() > new Date(fristDato) ? "error-moderate" : "warning-moderate",
         text: `Svarfrist: ${getShortDateFormat(fristDato)}`,
       }
     : undefined;
