@@ -1,6 +1,7 @@
 import React from "react";
 import { MikrofrontendPanel } from "./common/MikrofrontendPanel";
 import { getShortDateFormat } from "../../utils/dateUtils";
+import { harVurdertHeadingText } from "../../commonTexts";
 
 interface Props {
   sistVurdert: string;
@@ -9,7 +10,7 @@ interface Props {
 export const IkkeAktuellPanel = ({ sistVurdert }: Props) => {
   return (
     <MikrofrontendPanel
-      headingText="Aktivitetsplikten er ikke relevant for deg"
+      headingText={harVurdertHeadingText}
       bodyText="NAV vurderer at aktivitetsplikten ikke er aktuell for deg"
       alertStyle="info"
       tag={{

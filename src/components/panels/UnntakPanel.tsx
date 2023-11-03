@@ -2,6 +2,7 @@ import React from "react";
 import { MikrofrontendPanel } from "./common/MikrofrontendPanel";
 import { UnntakArsaker } from "../../schema/aktivitetskravVurderingSchema";
 import { getShortDateFormat } from "../../utils/dateUtils";
+import { harVurdertHeadingText } from "../../commonTexts";
 
 interface Props {
   arsak: UnntakArsaker;
@@ -24,7 +25,7 @@ export const UnntakPanel = ({ arsak, sistVurdert }: Props) => {
 
   return (
     <MikrofrontendPanel
-      headingText="Unntak fra aktivitetsplikten"
+      headingText={harVurdertHeadingText}
       bodyText={begrunnelseText}
       alertStyle="success"
       tag={{

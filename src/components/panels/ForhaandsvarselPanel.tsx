@@ -1,8 +1,9 @@
 import React from "react";
 import { MikrofrontendLinkPanel } from "./common/MikrofrontendLinkPanel";
 import { journalpostPageUrl } from "../../api/urls";
-import { MikrofrontendPanel } from "./common/MikrofrontendPanel";
+import { MikrofrontendPanel, TagMeta } from "./common/MikrofrontendPanel";
 import { getShortDateFormat } from "../../utils/dateUtils";
+import { vurdererHeadingText } from "../../commonTexts";
 
 interface Props {
   journalpostId?: string;
@@ -10,17 +11,21 @@ interface Props {
 }
 
 export const ForhaandsvarselPanel = ({ journalpostId, fristDato }: Props) => {
+  const tagInfo: TagMeta | undefined = fristDato
+    ? {
+        variant: new Date() > new Date(fristDato) ? "error-moderate" : "warning-moderate",
+        text: `Svarfrist: ${getShortDateFormat(fristDato)}`,
+      }
+    : undefined;
+
   if (!journalpostId) {
     return (
       //Skal normalt ikke skje, men for å ha en fallback dersom journalføring gikk galt eller noe.
       <MikrofrontendPanel
-        headingText="Mulig stans av sykepenger"
+        headingText={vurdererHeadingText}
         bodyText={`NAV vurderer å stanse sykepengene dine. Du vil motta et brev om dette i Mine Saker`}
-        alertStyle="error"
-        tag={{
-          variant: "error-moderate",
-          text: `Svarfrist: ${getShortDateFormat(fristDato)}`,
-        }}
+        alertStyle="warning"
+        tag={tagInfo}
       />
     );
   }
@@ -28,13 +33,10 @@ export const ForhaandsvarselPanel = ({ journalpostId, fristDato }: Props) => {
   return (
     <MikrofrontendLinkPanel
       href={journalpostPageUrl(journalpostId)}
-      headingText="Mulig stans av sykepenger"
+      headingText={vurdererHeadingText}
       bodyText="NAV vurderer å stanse sykepengene dine"
-      alertStyle="error"
-      tag={{
-        variant: "error-moderate",
-        text: `Svarfrist: ${getShortDateFormat(fristDato)}`,
-      }}
+      alertStyle="warning"
+      tag={tagInfo}
     />
   );
 };
