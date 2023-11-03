@@ -22,6 +22,11 @@ const ikkeAktuellVurdering: AktivitetskravVurdering = {
   sistVurdert: subtractDaysFromDate(new Date(), 5).toISOString(),
 };
 
+const avventVurdering: AktivitetskravVurdering = {
+  status: "AVVENT",
+  sistVurdert: subtractDaysFromDate(new Date(), 5).toISOString(),
+};
+
 const forhaandsvarselVurdering: AktivitetskravVurdering = {
   status: "FORHANDSVARSEL",
   sistVurdert: subtractDaysFromDate(new Date(), 5).toISOString(),
@@ -35,6 +40,7 @@ const fixtures = {
   oppfyltVurdering,
   ikkeAktuellVurdering,
   forhaandsvarselVurdering,
+  avventVurdering,
 };
 
 export default fixtures;
