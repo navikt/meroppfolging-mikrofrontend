@@ -49,6 +49,9 @@ export const ErrorIcon = styled(XMarkOctagonFillIcon)`
 
 export const BasePanel = styled.div`
   width: 100%;
+  @media (min-width: 648px) {
+    max-width: 444px;
+  }
   text-decoration: none;
   background-color: white;
   border-radius: 0.5rem;
