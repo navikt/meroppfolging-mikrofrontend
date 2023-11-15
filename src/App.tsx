@@ -21,6 +21,7 @@ function App() {
   if (data) {
     switch (data.status) {
       case "NY":
+      case "NY_VURDERING":
       case "AVVENT":
         return <UnderArbeidPanel />;
       case "UNNTAK":
