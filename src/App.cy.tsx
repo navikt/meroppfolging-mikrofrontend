@@ -15,14 +15,14 @@ describe("<App />", () => {
     cy.get("#mikrofrontend__linkPanel").contains("NAV vurderer å stanse sykepengene dine");
   });
 
-  it("Displays regular panel for forhåndsvarsel if no journalpostid is present", () => {
+  it("Displays under arbeid panel for forhåndsvarsel if no journalpostid is present", () => {
     cy.mountWithStubs(<App />, {
       status: "FORHANDSVARSEL",
       sistVurdert: new Date().toISOString(),
       fristDato: addDaysToDate(new Date(), 14).toISOString(),
     });
 
-    cy.get("#mikrofrontend__panel").contains(vurdererHeadingText);
+    cy.get("#mikrofrontend__linkPanel").contains("Les mer om aktivitetsplikten og hva den betyr for deg");
   });
 
   it("Displays under arbeid if status ny", () => {
