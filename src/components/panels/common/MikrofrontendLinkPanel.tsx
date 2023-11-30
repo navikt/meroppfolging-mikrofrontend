@@ -16,8 +16,12 @@ import {
 } from "./PanelComponents";
 import { aktivitetskravUrl } from "../../../api/urls";
 import { ChevronRightIcon } from "@navikt/aksel-icons";
-import { TagMeta } from "./MikrofrontendPanel";
 import { logEvent } from "../../../amplitude/amplitude";
+
+export interface TagMeta {
+  text: string;
+  variant: "info-moderate" | "success-moderate" | "warning-moderate" | "error-moderate";
+}
 
 interface Props {
   href?: string;

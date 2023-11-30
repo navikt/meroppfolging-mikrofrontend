@@ -1,9 +1,8 @@
 import React from "react";
-import { MikrofrontendLinkPanel } from "./common/MikrofrontendLinkPanel";
-import { journalpostPageUrl } from "../../api/urls";
-import { MikrofrontendPanel, TagMeta } from "./common/MikrofrontendPanel";
+import { MikrofrontendLinkPanel, TagMeta } from "./common/MikrofrontendLinkPanel";
 import { getShortDateFormat } from "../../utils/dateUtils";
 import { vurdererHeadingText } from "../../commonTexts";
+import { UnderArbeidPanel } from "./UnderArbeidPanel";
 
 interface Props {
   journalpostId?: string;
@@ -20,19 +19,13 @@ export const ForhaandsvarselPanel = ({ journalpostId, fristDato }: Props) => {
 
   if (!journalpostId) {
     return (
-      //Skal normalt ikke skje, men for å ha en fallback dersom journalføring gikk galt eller noe.
-      <MikrofrontendPanel
-        headingText={vurdererHeadingText}
-        bodyText={`NAV vurderer å stanse sykepengene dine. Du vil motta et brev om dette i Mine Saker`}
-        alertStyle="warning"
-        tag={tagInfo}
-      />
+      //vi har ikke mottatt all info fra isyfo enda, så viser mellomtilstand.
+      <UnderArbeidPanel />
     );
   }
 
   return (
     <MikrofrontendLinkPanel
-      href={journalpostPageUrl(journalpostId)}
       headingText={vurdererHeadingText}
       bodyText="NAV vurderer å stanse sykepengene dine"
       alertStyle="warning"

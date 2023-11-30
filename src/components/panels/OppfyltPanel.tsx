@@ -1,8 +1,8 @@
 import React from "react";
 import { OppfyltArsaker } from "../../schema/aktivitetskravVurderingSchema";
-import { MikrofrontendPanel } from "./common/MikrofrontendPanel";
 import { getShortDateFormat } from "../../utils/dateUtils";
 import { harVurdertHeadingText } from "../../commonTexts";
+import { MikrofrontendLinkPanel } from "./common/MikrofrontendLinkPanel";
 
 interface Props {
   arsak: OppfyltArsaker;
@@ -24,7 +24,7 @@ export const OppfyltPanel = ({ arsak, sistVurdert }: Props) => {
   const begrunnelseText = getBegrunnelseText(arsak);
 
   return (
-    <MikrofrontendPanel
+    <MikrofrontendLinkPanel
       headingText={harVurdertHeadingText}
       bodyText={begrunnelseText}
       alertStyle="success"
