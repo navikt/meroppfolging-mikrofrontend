@@ -32,8 +32,9 @@ interface Props {
 
 export const MikrofrontendLinkPanel = ({ headingText, alertStyle, bodyText, tag }: Props) => {
   const logAndNavigate = async () => {
-    await logEvent("navigere", { heading: headingText, body: bodyText });
-    window.location.href = aktivitetskravUrl;
+    await logEvent("navigere", { heading: headingText, body: bodyText }).then(() => {
+      window.location.href = aktivitetskravUrl;
+    });
   };
 
   return (
