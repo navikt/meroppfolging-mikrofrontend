@@ -4,7 +4,7 @@ import { getEnvironment } from "../api/urls";
 const maxAmplitudeTimeLimit = () => {
   return new Promise(() => {
     setTimeout(() => {
-      return Promise.resolve();
+      return Promise.reject(new Error("Amplitude event timeout"));
     }, 1000);
   });
 };
