@@ -14,9 +14,8 @@ import {
   SuccessIcon,
   YellowWarningIcon,
 } from "./PanelComponents";
-import { aktivitetskravUrl } from "../../../api/urls";
 import { ChevronRightIcon } from "@navikt/aksel-icons";
-import { logEvent } from "../../../amplitude/amplitude";
+import { logAndNavigate } from "../../../amplitude/amplitude";
 
 export interface TagMeta {
   text: string;
@@ -31,14 +30,11 @@ interface Props {
 }
 
 export const MikrofrontendLinkPanel = ({ headingText, alertStyle, bodyText, tag }: Props) => {
-  const logAndNavigate = async () => {
-    await logEvent("navigere", { heading: headingText, body: bodyText }).then(() => {
-      window.location.href = aktivitetskravUrl;
-    });
-  };
-
   return (
-    <ChevronPanel id="mikrofrontend__linkPanel" onClick={logAndNavigate}>
+    <ChevronPanel
+      id="mikrofrontend__linkPanel"
+      onClick={() => logAndNavigate("navigere", { heading: headingText, body: bodyText })}
+    >
       <HeadingRow>
         <HeadingSpacing size={"small"} level={"2"} className="aktivitetskrav__title">
           {headingText}
