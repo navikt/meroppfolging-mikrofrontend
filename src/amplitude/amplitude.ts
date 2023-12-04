@@ -1,6 +1,14 @@
 import { logAmplitudeEvent } from "@navikt/nav-dekoratoren-moduler";
 import { getEnvironment } from "../api/urls";
 
+const timeout = (ms: number) => {
+  return new Promise((_, reject) => {
+    setTimeout(() => {
+      reject();
+    }, ms);
+  });
+};
+
 export const logEvent = async (event: string, data?: Record<string, string>) => {
   if (getEnvironment() === "local") {
     console.log("Amplitude event: " + event);
@@ -8,10 +16,14 @@ export const logEvent = async (event: string, data?: Record<string, string>) => 
       console.table(data);
     }
   } else {
-    await logAmplitudeEvent({
-      origin: "aktivitetskrav-mikrofrontend",
-      eventName: event, // Event-navn (påkrevd)
-      eventData: data, // Event-data objekt (valgfri)
-    });
+    //Makstid på å logge event
+    await Promise.race([
+      timeout(1000),
+      logAmplitudeEvent({
+        origin: "aktivitetskrav-mikrofrontend",
+        eventName: event, // Event-navn (påkrevd)
+        eventData: data, // Event-data objekt (valgfri)
+      }),
+    ]);
   }
 };
