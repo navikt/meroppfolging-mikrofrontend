@@ -1,10 +1,10 @@
 import { logAmplitudeEvent } from "@navikt/nav-dekoratoren-moduler";
 import { getEnvironment } from "../api/urls";
 
-const timeout = (ms: number) => {
-  return new Promise((_, reject) => {
+const maxAmplitudeTimeLimit = (ms: number) => {
+  return new Promise(() => {
     setTimeout(() => {
-      reject(new Error("Slow response from Amplitude"));
+      return Promise.resolve();
     }, ms);
   });
 };
@@ -16,9 +16,8 @@ export const logEvent = async (event: string, data?: Record<string, string>) => 
       console.table(data);
     }
   } else {
-    //Makstid på å logge event
     await Promise.race([
-      timeout(1000),
+      maxAmplitudeTimeLimit(1000),
       logAmplitudeEvent({
         origin: "aktivitetskrav-mikrofrontend",
         eventName: event, // Event-navn (påkrevd)
