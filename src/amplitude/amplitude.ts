@@ -17,12 +17,11 @@ export const logAndNavigate = async (event: string, data?: Record<string, string
     try {
       await Promise.race([
         wait(1000),
-        async () =>
-          await logAmplitudeEvent({
-            origin: "aktivitetskrav-mikrofrontend",
-            eventName: event, // Event-navn (påkrevd)
-            eventData: data, // Event-data objekt (valgfri)
-          }),
+        logAmplitudeEvent({
+          origin: "aktivitetskrav-mikrofrontend",
+          eventName: event, // Event-navn (påkrevd)
+          eventData: data, // Event-data objekt (valgfri)
+        }),
       ]);
     } catch (err) {
       console.log(err);
