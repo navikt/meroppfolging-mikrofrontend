@@ -4,7 +4,7 @@ import { getEnvironment } from "../api/urls";
 const timeout = (ms: number) => {
   return new Promise((_, reject) => {
     setTimeout(() => {
-      reject();
+      reject(new Error("Slow response from Amplitude"));
     }, ms);
   });
 };
