@@ -1,11 +1,11 @@
 import { logAmplitudeEvent } from "@navikt/nav-dekoratoren-moduler";
 import { getEnvironment } from "../api/urls";
 
-const maxAmplitudeTimeLimit = (ms: number) => {
+const maxAmplitudeTimeLimit = () => {
   return new Promise(() => {
     setTimeout(() => {
       return Promise.resolve();
-    }, ms);
+    }, 1000);
   });
 };
 
@@ -16,13 +16,17 @@ export const logEvent = async (event: string, data?: Record<string, string>) => 
       console.table(data);
     }
   } else {
-    await Promise.race([
-      maxAmplitudeTimeLimit(1000),
-      logAmplitudeEvent({
-        origin: "aktivitetskrav-mikrofrontend",
-        eventName: event, // Event-navn (påkrevd)
-        eventData: data, // Event-data objekt (valgfri)
-      }),
-    ]);
+    try {
+      await Promise.race([
+        maxAmplitudeTimeLimit(),
+        logAmplitudeEvent({
+          origin: "aktivitetskrav-mikrofrontend",
+          eventName: event, // Event-navn (påkrevd)
+          eventData: data, // Event-data objekt (valgfri)
+        }),
+      ]);
+    } catch (e) {
+      return Promise.resolve();
+    }
   }
 };
