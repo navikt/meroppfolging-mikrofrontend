@@ -14,27 +14,27 @@ import {
   SuccessIcon,
   YellowWarningIcon,
 } from "./PanelComponents";
-import { aktivitetskravUrl } from "../../../api/urls";
 import { ChevronRightIcon } from "@navikt/aksel-icons";
-import { TagMeta } from "./MikrofrontendPanel";
-import { logEvent } from "../../../amplitude/amplitude";
+import { logAndNavigate } from "../../../amplitude/amplitude";
+
+export interface TagMeta {
+  text: string;
+  variant: "info-moderate" | "success-moderate" | "warning-moderate" | "error-moderate";
+}
 
 interface Props {
-  href?: string;
   headingText: string;
   alertStyle: "info" | "success" | "warning" | "error";
   bodyText: string;
   tag?: TagMeta;
 }
 
-export const MikrofrontendLinkPanel = ({ href, headingText, alertStyle, bodyText, tag }: Props) => {
-  const logAndNavigate = async () => {
-    await logEvent("navigere", { heading: headingText, body: bodyText });
-    window.location.href = href || aktivitetskravUrl;
-  };
-
+export const MikrofrontendLinkPanel = ({ headingText, alertStyle, bodyText, tag }: Props) => {
   return (
-    <ChevronPanel id="mikrofrontend__linkPanel" onClick={logAndNavigate}>
+    <ChevronPanel
+      id="mikrofrontend__linkPanel"
+      onClick={() => logAndNavigate("navigere", { heading: headingText, body: bodyText })}
+    >
       <HeadingRow>
         <HeadingSpacing size={"small"} level={"2"} className="aktivitetskrav__title">
           {headingText}

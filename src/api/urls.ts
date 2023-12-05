@@ -29,8 +29,8 @@ const ESYFO_PROXY_API_URL: EnvUrl = {
 
 const AKTIVITETSKRAV_URL: EnvUrl = {
   local: "http://localhost:3000/?aktivitetsplikt-url",
-  development: `https://www.ekstern.dev.nav.no/syk/info/aktivitetsplikt`,
-  production: `https://www.nav.no/syk/info/aktivitetsplikt`,
+  development: `https://www.intern.dev.nav.no/syk/aktivitetskrav`,
+  production: `https://www.nav.no/syk/aktivitetskrav`,
 };
 
 const JOURNALPOST_PAGE_URL: EnvUrl = {
