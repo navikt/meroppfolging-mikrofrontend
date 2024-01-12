@@ -14,7 +14,6 @@ export const InfoIcon = styled(InformationSquareFillIcon)`
   height: 24px;
   background: radial-gradient(circle at 50% 57%, var(--a-surface-default) 32%, 0, transparent);
   color: var(--ac-alert-icon-info-color, var(--a-icon-info));
-  box-shadow: var(--a-shadow-xsmall);
 `;
 
 export const YellowWarningIcon = styled(ExclamationmarkTriangleFillIcon)`
@@ -24,7 +23,6 @@ export const YellowWarningIcon = styled(ExclamationmarkTriangleFillIcon)`
   height: 24px;
   background: radial-gradient(circle at 50% 57%, var(--a-surface-default) 32%, 0, transparent);
   color: var(--ac-alert-icon-warning-color, var(--a-icon-warning));
-  box-shadow: var(--a-shadow-xsmall);
 `;
 
 export const SuccessIcon = styled(CheckmarkCircleFillIcon)`
@@ -34,7 +32,6 @@ export const SuccessIcon = styled(CheckmarkCircleFillIcon)`
   height: 24px;
   background: radial-gradient(circle at 50% 57%, var(--a-surface-default) 32%, 0, transparent);
   color: var(--ac-alert-icon-success-color, var(--a-icon-success));
-  box-shadow: var(--a-shadow-xsmall);
 `;
 
 export const ErrorIcon = styled(XMarkOctagonFillIcon)`
@@ -44,7 +41,6 @@ export const ErrorIcon = styled(XMarkOctagonFillIcon)`
   height: 24px;
   background: radial-gradient(circle at 50% 57%, var(--a-surface-default) 32%, 0, transparent);
   color: var(--ac-alert-icon-error-color, var(--a-icon-danger));
-  box-shadow: var(--a-shadow-xsmall);
 `;
 
 export const BasePanel = styled.div`
