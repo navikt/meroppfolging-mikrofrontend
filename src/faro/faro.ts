@@ -1,8 +1,8 @@
 import { Faro, getWebInstrumentations, initializeFaro } from "@grafana/faro-web-sdk";
 import { TracingInstrumentation } from "@grafana/faro-web-tracing";
-// eslint-disable-next-line
 import { faroTelemetryUrl, getEnvironment } from "../api/urls";
 
+// eslint-disable-next-line
 declare const window: any;
 
 export const logError = (error: Error) => {
