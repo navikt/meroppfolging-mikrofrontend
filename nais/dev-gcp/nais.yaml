@@ -6,7 +6,7 @@ metadata:
   labels:
     team: team-esyfo
 spec:
-  image: { { image } }
+  image: {{ image }}
   port: 8080
   liveness:
     path: /meroppfolging-mikrofrontend/internal/isAlive
