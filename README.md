@@ -1,6 +1,6 @@
 # meroppfolging-mikrofrontend
 
-Mikrofrontend for mer oppfølging / snart slutt på sykepengene. Appen blir lastet opp til nav sin CDN ved push til main og har et manifest som deployes til Nais.
+Mikrofrontend for mer oppfølging / snart slutt på sykepengene.
 
 # Kom i gang
 
