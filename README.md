@@ -1,9 +1,9 @@
-# aktivitetskrav-mikrofrontend
+# meroppfolging-mikrofrontend
 
-Mikrofrontend for Aktivitetskrav. Appen blir lastet opp til nav sin CDN ved push til main og har et manifest som deployes til Nais.
+Mikrofrontend for mer oppfølging / snart slutt på sykepengene.
 
 # Kom i gang
 
-1. Bygg: npm run build
+1. Installer pakker: npm install
 2. Start: npm run dev
 3. Appen nås på http://localhost:3000

@@ -1,13 +1,14 @@
 import React from "react";
-import App from "./App";
-import { ErrorBoundary } from "react-error-boundary";
-import { logError } from "./faro/faro";
+import { MikrofrontendLinkPanel } from "./components/panels/MikrofrontendLinkPanel";
 
 const Mikrofrontend = () => {
   return (
-    <ErrorBoundary fallback={<></>} onError={logError}>
-      <App />
-    </ErrorBoundary>
+    <MikrofrontendLinkPanel
+      headingText="Snart slutt på sykepengene"
+      bodyText="Du må ta stilling til hva du skal gjøre i god tid før sykepengene tar slutt"
+      alertStyle="warning"
+      tag={{ variant: "warning-moderate", text: "Les mer om dine muligheter fremover" }}
+    />
   );
 };
 

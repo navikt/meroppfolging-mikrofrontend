@@ -1,5 +1,5 @@
 import { logAmplitudeEvent } from "@navikt/nav-dekoratoren-moduler";
-import { aktivitetskravUrl, getEnvironment } from "../api/urls";
+import { sspsUrl, getEnvironment } from "../api/urls";
 
 function wait(ms: number) {
   return new Promise((_, reject) => {
@@ -18,7 +18,7 @@ export const logAndNavigate = async (event: string, data?: Record<string, string
       await Promise.race([
         wait(1000),
         logAmplitudeEvent({
-          origin: "aktivitetskrav-mikrofrontend",
+          origin: "meroppfolging-mikrofrontend",
           eventName: event, // Event-navn (påkrevd)
           eventData: data, // Event-data objekt (valgfri)
         }),
@@ -26,7 +26,7 @@ export const logAndNavigate = async (event: string, data?: Record<string, string
     } catch (err) {
       console.log(err);
     } finally {
-      window.location.href = aktivitetskravUrl;
+      window.location.href = sspsUrl;
     }
   }
 };

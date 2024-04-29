@@ -12,5 +12,5 @@ jobs:
       packages: write
     secrets: inherit
     with:
-      app: aktivitetskrav-mikrofrontend
-      id: syfo-aktivitetskrav
+      app: meroppfolging-mikrofrontend
+      id: syfo-meroppfolging

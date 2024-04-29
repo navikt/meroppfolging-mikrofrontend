@@ -1,5 +1,3 @@
-import { HeadingSpacing } from "../../typography/typography";
-import { Column } from "../../columns/Column";
 import React from "react";
 import {
   AlertContainer,
@@ -15,7 +13,9 @@ import {
   YellowWarningIcon,
 } from "./PanelComponents";
 import { ChevronRightIcon } from "@navikt/aksel-icons";
-import { logAndNavigate } from "../../../amplitude/amplitude";
+import { logAndNavigate } from "../../amplitude/amplitude";
+import { Column } from "../columns/Column";
+import { HeadingSpacing } from "../typography/typography";
 
 export interface TagMeta {
   text: string;
@@ -31,12 +31,9 @@ interface Props {
 
 export const MikrofrontendLinkPanel = ({ headingText, alertStyle, bodyText, tag }: Props) => {
   return (
-    <ChevronPanel
-      id="mikrofrontend__linkPanel"
-      onClick={() => logAndNavigate("navigere", { heading: headingText, body: bodyText })}
-    >
+    <ChevronPanel id="mikrofrontend__linkPanel" onClick={() => logAndNavigate("navigere")}>
       <HeadingRow>
-        <HeadingSpacing size={"small"} level={"2"} className="aktivitetskrav__title">
+        <HeadingSpacing size={"small"} level={"2"} className="mikrofrontend-linkpanel__title">
           {headingText}
         </HeadingSpacing>
         <ChevronSection>

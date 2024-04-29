@@ -1,7 +1,7 @@
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: aktivitetskrav-mikrofrontend
+  name: meroppfolging-mikrofrontend
   namespace: team-esyfo
   labels:
     team: team-esyfo
@@ -9,19 +9,19 @@ spec:
   image: {{ image }}
   port: 8080
   liveness:
-    path: /aktivitetskrav-mikrofrontend/internal/isAlive
+    path: /meroppfolging-mikrofrontend/internal/isAlive
     initialDelay: 10
   readiness:
-    path: /aktivitetskrav-mikrofrontend/internal/isReady
+    path: /meroppfolging-mikrofrontend/internal/isReady
     initialDelay: 10
   prometheus:
     enabled: true
-    path: /aktivitetskrav-mikrofrontend/internal/metrics
+    path: /meroppfolging-mikrofrontend/internal/metrics
   replicas:
     min: 2
     max: 4
   ingresses:
-    - "https://www.nav.no/aktivitetskrav-mikrofrontend"
+    - "https://www.nav.no/meroppfolging-mikrofrontend"
   resources:
     limits:
       cpu: "3"

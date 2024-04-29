@@ -20,12 +20,11 @@ export default defineConfig({
     },
   ],
   build: {
-    manifest: true,
     rollupOptions: {
       input: resolve(__dirname, "src/Mikrofrontend.tsx"),
       preserveEntrySignatures: "exports-only",
       output: {
-        entryFileNames: "aktivitetskrav-mikrofrontend.[hash].js",
+        entryFileNames: "meroppfolging-mikrofrontend.[hash].js",
         format: "esm",
       },
     },

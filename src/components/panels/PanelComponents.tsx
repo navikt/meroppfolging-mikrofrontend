@@ -51,7 +51,9 @@ export const BasePanel = styled.div`
   text-decoration: none;
   background-color: white;
   border-radius: 0.5rem;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 0.5px 0 rgba(0, 0, 0, 0.18);
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.12),
+    0 0 0.5px 0 rgba(0, 0, 0, 0.18);
 `;
 
 export const ChevronPanel = styled(BasePanel)`
@@ -64,7 +66,7 @@ export const ChevronPanel = styled(BasePanel)`
       transform: translateX(4px);
     }
 
-    .aktivitetskrav__title {
+    .mikrofrontend-linkpanel__title {
       text-decoration: underline;
     }
   }

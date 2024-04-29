@@ -21,7 +21,7 @@ export const initFaro = (): Faro | null => {
   return initializeFaro({
     url: faroTelemetryUrl,
     app: {
-      name: "aktivitetskrav-mikrofrontend",
+      name: "meroppfolging-mikrofrontend",
       version: "",
     },
     instrumentations: [
