@@ -23,7 +23,7 @@
     "react-error-boundary": "^4.0.13",
     "styled-components": "^6.1.10",
     "swr": "2.2.5",
-    "zod": "^3.23.7"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@rollup/plugin-terser": "0.4.4",
