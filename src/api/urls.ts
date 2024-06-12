@@ -27,6 +27,13 @@ const SSPS_URL: EnvUrl = {
   production: `https://www.nav.no/syk/meroppfolging/snart-slutt-pa-sykepengene`,
 };
 
+const MEROPPFOLGING_BACKEND_API_URL: EnvUrl = {
+  local: "http://localhost:3000/api/meroppfolging/v2/senoppfolging/status",
+  development: `https://www.intern.dev.nav.no/esyfo-proxy/api/meroppfolging/v2/senoppfolging/status`,
+  production: `https://www.nav.no/esyfo-proxy/api/meroppfolging/v2/senoppfolging/status`,
+};
+
 export const sspsUrl = SSPS_URL[getEnvironment()];
+export const meroppfolgingApiUrl = MEROPPFOLGING_BACKEND_API_URL[getEnvironment()];
 
 export const faroTelemetryUrl = FARO_TELEMETRY_URL[getEnvironment()];

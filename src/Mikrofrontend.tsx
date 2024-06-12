@@ -1,14 +1,23 @@
 import React from "react";
-import { MikrofrontendLinkPanel } from "./components/panels/MikrofrontendLinkPanel";
+import App from "./App";
+import styled from "styled-components";
+import { ErrorBoundary } from "react-error-boundary";
+import { logError } from "./faro/faro";
+
+const Wrapper = styled.div`
+  width: 100%;
+  @media (min-width: 648px) {
+    max-width: 444px;
+  }
+`;
 
 const Mikrofrontend = () => {
   return (
-    <MikrofrontendLinkPanel
-      headingText="Snart slutt på sykepengene"
-      bodyText="Du må ta stilling til hva du skal gjøre i god tid før sykepengene tar slutt"
-      alertStyle="warning"
-      tag={{ variant: "warning-moderate", text: "Les mer om dine muligheter fremover" }}
-    />
+    <ErrorBoundary fallback={<></>} onError={logError}>
+      <Wrapper>
+        <App />
+      </Wrapper>
+    </ErrorBoundary>
   );
 };
 
