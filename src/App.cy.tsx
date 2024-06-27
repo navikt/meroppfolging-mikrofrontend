@@ -28,7 +28,7 @@ describe("<App />", () => {
 
     cy.contains("Snart slutt på sykepengene");
     cy.contains("Den 31.12.2024 er datoen du ikke lenger vil motta sykepenger (maksdato).");
-    cy.contains("Vi trenger derfor at du svarer på to spørsmål om situasjonen du står i så vi kan hjelpe deg");
+    cy.contains("Vi trenger derfor at du svarer på noen få spørsmål om situasjonen du står i så vi kan hjelpe deg");
     cy.contains("Du har ikke svart");
   });
 
@@ -37,7 +37,7 @@ describe("<App />", () => {
 
     cy.contains("Snart slutt på sykepengene");
     cy.contains("Det nærmer seg datoen du ikke lenger vil motta sykepenger.");
-    cy.contains("Vi trenger derfor at du svarer på to spørsmål om situasjonen du står i så vi kan hjelpe deg");
+    cy.contains("Vi trenger derfor at du svarer på noen få spørsmål om situasjonen du står i så vi kan hjelpe deg");
     cy.contains("Du har ikke svart");
   });
 });

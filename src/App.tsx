@@ -21,7 +21,7 @@ function App() {
     return (
       <MikrofrontendLinkPanel
         headingText="Snart slutt på sykepengene"
-        bodyText={`${maxDateText} Vi trenger derfor at du svarer på to spørsmål om situasjonen du står i så vi kan hjelpe deg.`}
+        bodyText={`${maxDateText} Vi trenger derfor at du svarer på noen få spørsmål om situasjonen du står i så vi kan hjelpe deg.`}
         alertStyle="warning"
         tag={{ variant: "warning-moderate", text: "Du har ikke svart" }}
       />
