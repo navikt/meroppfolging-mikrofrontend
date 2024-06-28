@@ -5,7 +5,8 @@ import { Fetcher } from "swr";
 import React from "react";
 import { SenOppfolgingStatusDTO } from "./schema/senOppfolgingStatusSchema";
 import { MikrofrontendLinkPanel } from "./components/panels/MikrofrontendLinkPanel";
-import moment from "moment";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 
 function App() {
   const fetchSenOppfolgingStatus: Fetcher<SenOppfolgingStatusDTO, string> = (path) => get(path);
@@ -29,8 +30,9 @@ function App() {
       />
     );
   } else if (data && data.isPilot === true && data.responseTime != null) {
-    const responseDate = moment(data.responseTime, datePattern);
-    const oneWeekAgo = moment().subtract(1, "week");
+    dayjs.extend(customParseFormat);
+    const responseDate = dayjs(data.responseTime, datePattern);
+    const oneWeekAgo = dayjs().subtract(1, "week");
 
     if (responseDate.isAfter(oneWeekAgo) && data.responseStatus == "TRENGER_OPPFOLGING") {
       return (

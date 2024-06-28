@@ -1,5 +1,5 @@
 import { SenOppfolgingStatusDTO } from "../../../schema/senOppfolgingStatusSchema";
-import moment from "moment";
+import dayjs from "dayjs";
 
 export const createNoResponse = (props?: Partial<SenOppfolgingStatusDTO>): SenOppfolgingStatusDTO => {
   return {
@@ -13,7 +13,7 @@ export const createNeedsHelpResponse = (props?: Partial<SenOppfolgingStatusDTO>)
   return {
     isPilot: true,
     responseStatus: "TRENGER_OPPFOLGING",
-    responseTime: moment().subtract(4, "days").format("DD.MM.YYYY"),
+    responseTime: dayjs().subtract(4, "days").format("DD.MM.YYYY"),
     ...props,
   };
 };
@@ -22,7 +22,7 @@ export const createDoesntNeedHelpResponse = (props?: Partial<SenOppfolgingStatus
   return {
     isPilot: true,
     responseStatus: "TRENGER_IKKE_OPPFOLGING",
-    responseTime: moment().subtract(6, "days").format("DD.MM.YYYY"),
+    responseTime: dayjs().subtract(6, "days").format("DD.MM.YYYY"),
     ...props,
   };
 };
@@ -31,7 +31,7 @@ export const createOutdatedResponse = (props?: Partial<SenOppfolgingStatusDTO>):
   return {
     isPilot: true,
     responseStatus: "TRENGER_IKKE_OPPFOLGING",
-    responseTime: moment().subtract(7, "days").format("DD.MM.YYYY"),
+    responseTime: dayjs().subtract(7, "days").format("DD.MM.YYYY"),
     ...props,
   };
 };
