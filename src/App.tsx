@@ -5,10 +5,13 @@ import { Fetcher } from "swr";
 import React from "react";
 import { SenOppfolgingStatusDTO } from "./schema/senOppfolgingStatusSchema";
 import { MikrofrontendLinkPanel } from "./components/panels/MikrofrontendLinkPanel";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 
 function App() {
   const fetchSenOppfolgingStatus: Fetcher<SenOppfolgingStatusDTO, string> = (path) => get(path);
   const { data, error } = useSWRImmutable(meroppfolgingApiUrl, fetchSenOppfolgingStatus);
+  const datePattern = "DD.MM.YYYY";
 
   if (error) throw error;
 
@@ -26,24 +29,32 @@ function App() {
         tag={{ variant: "warning-moderate", text: "Du har ikke svart" }}
       />
     );
-  } else if (data && data.isPilot === true && data.responseStatus == "TRENGER_OPPFOLGING") {
-    return (
-      <MikrofrontendLinkPanel
-        headingText="Snart slutt på sykepengene"
-        bodyText="Du har svart at du har behov for hjelp fra NAV. En veileder vil ta kontakt med deg."
-        alertStyle="info"
-        tag={{ variant: "success-moderate", text: `Du svarte den ${data.responseTime}` }}
-      />
-    );
-  } else if (data && data.isPilot === true && data.responseStatus == "TRENGER_IKKE_OPPFOLGING") {
-    return (
-      <MikrofrontendLinkPanel
-        headingText="Snart slutt på sykepengene"
-        bodyText="Du har svart at du ikke har behov for hjelp fra NAV. Ta kontakt hvis situasjonen din endrer seg."
-        alertStyle="info"
-        tag={{ variant: "success-moderate", text: `Du svarte den  ${data.responseTime}` }}
-      />
-    );
+  } else if (data && data.isPilot === true && data.responseTime != null) {
+    dayjs.extend(customParseFormat);
+    const responseDate = dayjs(data.responseTime, datePattern);
+    const oneWeekAgo = dayjs().subtract(1, "week");
+
+    if (responseDate.isAfter(oneWeekAgo) && data.responseStatus == "TRENGER_OPPFOLGING") {
+      return (
+        <MikrofrontendLinkPanel
+          headingText="Snart slutt på sykepengene"
+          bodyText="Du har svart at du har behov for hjelp fra NAV. En veileder vil ta kontakt med deg."
+          alertStyle="info"
+          tag={{ variant: "success-moderate", text: `Du svarte den ${responseDate.format(datePattern)}` }}
+        />
+      );
+    } else if (responseDate.isAfter(oneWeekAgo) && data.responseStatus == "TRENGER_IKKE_OPPFOLGING") {
+      return (
+        <MikrofrontendLinkPanel
+          headingText="Snart slutt på sykepengene"
+          bodyText="Du har svart at du ikke har behov for hjelp fra NAV. Ta kontakt hvis situasjonen din endrer seg."
+          alertStyle="info"
+          tag={{ variant: "success-moderate", text: `Du svarte den  ${responseDate.format(datePattern)}` }}
+        />
+      );
+    } else {
+      return <></>;
+    }
   } else {
     return (
       <MikrofrontendLinkPanel

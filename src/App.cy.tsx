@@ -4,23 +4,33 @@ import {
   createDoesntNeedHelpResponse,
   createNeedsHelpResponse,
   createNoResponse,
+  createOutdatedResponse,
 } from "./mocks/fixtures/factories/senoppfolging";
 
 describe("<App />", () => {
   it("User has responded that they need help", () => {
-    cy.mountWithStubs(<App />, { senOppfolgingResponse: createNeedsHelpResponse() });
+    const senOppfolgingResponse = createNeedsHelpResponse();
+    cy.mountWithStubs(<App />, { senOppfolgingResponse: senOppfolgingResponse });
 
     cy.contains("Snart slutt på sykepengene");
     cy.contains("Du har svart at du har behov for hjelp");
-    cy.contains("Du svarte den 12.03.2024");
+    cy.contains(senOppfolgingResponse.responseTime!);
   });
 
   it("User has responded that they doesn't need help", () => {
-    cy.mountWithStubs(<App />, { senOppfolgingResponse: createDoesntNeedHelpResponse() });
+    const senOppfolgingResponse = createDoesntNeedHelpResponse();
+    cy.mountWithStubs(<App />, { senOppfolgingResponse: senOppfolgingResponse });
 
     cy.contains("Snart slutt på sykepengene");
     cy.contains("Du har svart at du ikke har behov for hjelp");
-    cy.contains("Du svarte den 12.03.2024");
+    cy.contains(senOppfolgingResponse.responseTime!);
+  });
+
+  it("User has responded more than one week ago", () => {
+    cy.mountWithStubs(<App />, { senOppfolgingResponse: createOutdatedResponse() });
+
+    cy.contains("Snart slutt på sykepengene").should("not.exist");
+    cy.contains("Du har svart at du ikke har behov for hjelp").should("not.exist");
   });
 
   it("User hasn't responded", () => {
