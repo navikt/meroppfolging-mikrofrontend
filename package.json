@@ -44,7 +44,7 @@
     "eslint-plugin-jsx-a11y": "^6.10.0",
     "eslint-plugin-react": "^7.36.1",
     "husky": "9.1.6",
-    "jsdom": "24.1.1",
+    "jsdom": "25.0.0",
     "lint-staged": "15.2.10",
     "msw": "^2.4.9",
     "postcss": "^8.4.47",
