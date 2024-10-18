@@ -1,5 +1,5 @@
 const isProduction = window.location.href.includes("www.nav.no");
-const isDevelopment = window.location.href.includes("intern.dev.nav.no");
+const isDevelopment = window.location.href.includes("ansatt.dev.nav.no");
 
 export const getEnvironment = (): "production" | "development" | "local" => {
   if (isProduction) {
