@@ -8,6 +8,8 @@ import { MikrofrontendLinkPanel } from "./components/panels/MikrofrontendLinkPan
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
+const noMicroFrontend = <></>;
+
 function App() {
   const fetchSenOppfolgingStatus: Fetcher<SenOppfolgingStatusDTO, string> = (path) => get(path);
   const { data, error } = useSWRImmutable(meroppfolgingApiUrl, fetchSenOppfolgingStatus);
@@ -15,47 +17,61 @@ function App() {
 
   if (error) throw error;
 
-  if (data && data.isPilot === true && data.responseStatus == "NO_RESPONSE") {
-    const maxDateText =
-      data.maxDate != null
-        ? `Den ${data.maxDate} er datoen du ikke lenger vil motta sykepenger (maksdato).`
-        : `Det nærmer seg datoen du ikke lenger vil motta sykepenger.`;
+  if (data && data.isPilot) {
+    if (data.responseStatus == "NO_RESPONSE") {
+      const maxDateText =
+        data.maxDate != null
+          ? `Siste dag du kan motta sykepenger er beregnet til ${data.maxDate}.`
+          : `Det nærmer seg siste dag du kan motta sykepenger.`;
 
-    return (
-      <MikrofrontendLinkPanel
-        headingText="Snart slutt på sykepengene"
-        bodyText={`${maxDateText} Vi trenger derfor at du svarer på noen få spørsmål om situasjonen du står i så vi kan hjelpe deg.`}
-        alertStyle="warning"
-        tag={{ variant: "warning-moderate", text: "Du har ikke svart" }}
-      />
-    );
-  } else if (data && data.isPilot === true && data.responseTime != null) {
-    dayjs.extend(customParseFormat);
-    const responseDate = dayjs(data.responseTime, datePattern);
-    const oneWeekAgo = dayjs().subtract(1, "week");
-
-    if (responseDate.isAfter(oneWeekAgo) && data.responseStatus == "TRENGER_OPPFOLGING") {
       return (
         <MikrofrontendLinkPanel
           headingText="Snart slutt på sykepengene"
-          bodyText="Du har svart at du har behov for hjelp fra NAV. En veileder vil ta kontakt med deg."
+          bodyText={`${maxDateText} Vi ber derfor om at du svarer på om du ønsker å snakke med en veileder.`}
           alertStyle="info"
-          tag={{ variant: "success-moderate", text: `Du svarte den ${responseDate.format(datePattern)}` }}
-        />
-      );
-    } else if (responseDate.isAfter(oneWeekAgo) && data.responseStatus == "TRENGER_IKKE_OPPFOLGING") {
-      return (
-        <MikrofrontendLinkPanel
-          headingText="Snart slutt på sykepengene"
-          bodyText="Du har svart at du ikke har behov for hjelp fra NAV. Ta kontakt hvis situasjonen din endrer seg."
-          alertStyle="info"
-          tag={{ variant: "success-moderate", text: `Du svarte den  ${responseDate.format(datePattern)}` }}
+          tag={{ variant: "warning-moderate", text: "Du har ikke svart" }}
         />
       );
     } else {
-      return <></>;
+      // Is pilot and has responded
+
+      if (!data.responseTime) {
+        return noMicroFrontend;
+      }
+
+      dayjs.extend(customParseFormat);
+      const responseDate = dayjs(data.responseTime, datePattern);
+      const oneWeekAgo = dayjs().subtract(1, "week");
+
+      const isResponseDateLessThanAWeekAgo = oneWeekAgo.isBefore(responseDate);
+
+      if (isResponseDateLessThanAWeekAgo) {
+        if (data.responseStatus === "TRENGER_OPPFOLGING") {
+          return (
+            <MikrofrontendLinkPanel
+              headingText="Snart slutt på sykepengene"
+              bodyText="Du har svart at du ønsker å snakke med en veileder. Vi tar kontakt med deg."
+              alertStyle="info"
+              tag={{ variant: "success-moderate", text: `Du svarte den ${responseDate.format(datePattern)}` }}
+            />
+          );
+        } else if (data.responseStatus === "TRENGER_IKKE_OPPFOLGING") {
+          return (
+            <MikrofrontendLinkPanel
+              headingText="Snart slutt på sykepengene"
+              bodyText="Du har svart at du ikke trenger å snakke med en veileder nå. Ta kontakt hvis situasjonen din endrer seg."
+              alertStyle="info"
+              tag={{ variant: "success-moderate", text: `Du svarte den  ${responseDate.format(datePattern)}` }}
+            />
+          );
+        }
+      }
+
+      // Hide microfrontend when responded more than one week ago
+      return noMicroFrontend;
     }
   } else {
+    // Not pilot
     return (
       <MikrofrontendLinkPanel
         headingText="Snart slutt på sykepengene"
