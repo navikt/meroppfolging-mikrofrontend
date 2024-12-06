@@ -13,7 +13,7 @@ describe("<App />", () => {
     cy.mountWithStubs(<App />, { senOppfolgingResponse: senOppfolgingResponse });
 
     cy.contains("Snart slutt på sykepengene");
-    cy.contains("Du har svart at du ønsker å snakke med en veileder");
+    cy.contains("Du har svart at du ønsker oppfølging");
     cy.contains(senOppfolgingResponse.responseTime!);
   });
 
@@ -22,7 +22,7 @@ describe("<App />", () => {
     cy.mountWithStubs(<App />, { senOppfolgingResponse: senOppfolgingResponse });
 
     cy.contains("Snart slutt på sykepengene");
-    cy.contains("Du har svart at du ikke trenger å snakke med en veileder");
+    cy.contains("Du har svart at du ikke trenger oppfølging nå.");
     cy.contains(senOppfolgingResponse.responseTime!);
   });
 
@@ -30,15 +30,15 @@ describe("<App />", () => {
     cy.mountWithStubs(<App />, { senOppfolgingResponse: createOutdatedResponse() });
 
     cy.contains("Snart slutt på sykepengene").should("not.exist");
-    cy.contains("Du har svart at du ikke trenger å snakke med en veileder").should("not.exist");
+    cy.contains("Du har svart at du ikke trenger oppfølging nå").should("not.exist");
   });
 
   it("User hasn't responded", () => {
     cy.mountWithStubs(<App />, { senOppfolgingResponse: createNoResponse({ maxDate: "31. desember 2024" }) });
 
     cy.contains("Snart slutt på sykepengene");
-    cy.contains("Siste dag du kan motta sykepenger er beregnet til 31. desember 2024.");
-    cy.contains("Vi ber derfor om at du svarer på om du ønsker å snakke med en veileder.");
+    cy.contains("31. desember 2024 er din siste dag med sykepenger.");
+    cy.contains("Vi ber deg derfor vurdere situasjonen din.");
     cy.contains("Du har ikke svart");
   });
 
@@ -47,7 +47,7 @@ describe("<App />", () => {
 
     cy.contains("Snart slutt på sykepengene");
     cy.contains("Det nærmer seg siste dag du kan motta sykepenger.");
-    cy.contains("Vi ber derfor om at du svarer på om du ønsker å snakke med en veileder.");
+    cy.contains("Vi ber deg derfor vurdere situasjonen din.");
     cy.contains("Du har ikke svart");
   });
 });

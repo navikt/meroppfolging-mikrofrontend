@@ -7,9 +7,9 @@ const responseStatusType = union([
 ]);
 
 export const senOppfolgingStatusSchema = object({
-  isPilot: boolean(),
   responseStatus: responseStatusType,
   responseTime: string().nullish(),
+  hasAccessToSenOppfolging: boolean(),
   maxDate: string().nullish(),
 });
 

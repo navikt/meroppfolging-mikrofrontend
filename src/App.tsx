@@ -17,17 +17,17 @@ function App() {
 
   if (error) throw error;
 
-  if (data && data.isPilot) {
+  if (data) {
     if (data.responseStatus == "NO_RESPONSE") {
       const maxDateText =
         data.maxDate != null
-          ? `Siste dag du kan motta sykepenger er beregnet til ${data.maxDate}.`
+          ? `${data.maxDate} er din siste dag med sykepenger.`
           : `Det nærmer seg siste dag du kan motta sykepenger.`;
 
       return (
         <MikrofrontendLinkPanel
           headingText="Snart slutt på sykepengene"
-          bodyText={`${maxDateText} Vi ber derfor om at du svarer på om du ønsker å snakke med en veileder.`}
+          bodyText={`${maxDateText} Vi ber deg derfor vurdere situasjonen din.`}
           alertStyle="info"
           tag={{ variant: "warning-moderate", text: "Du har ikke svart" }}
         />
@@ -50,7 +50,7 @@ function App() {
           return (
             <MikrofrontendLinkPanel
               headingText="Snart slutt på sykepengene"
-              bodyText="Du har svart at du ønsker å snakke med en veileder. Vi tar kontakt med deg."
+              bodyText="Du har svart at du ønsker oppfølging. Vi tar kontakt med deg."
               alertStyle="info"
               tag={{ variant: "success-moderate", text: `Du svarte den ${responseDate.format(datePattern)}` }}
             />
@@ -59,7 +59,7 @@ function App() {
           return (
             <MikrofrontendLinkPanel
               headingText="Snart slutt på sykepengene"
-              bodyText="Du har svart at du ikke trenger å snakke med en veileder nå. Ta kontakt hvis situasjonen din endrer seg."
+              bodyText="Du har svart at du ikke trenger oppfølging nå. Ta kontakt hvis situasjonen din endrer seg."
               alertStyle="info"
               tag={{ variant: "success-moderate", text: `Du svarte den  ${responseDate.format(datePattern)}` }}
             />
@@ -71,15 +71,7 @@ function App() {
       return noMicroFrontend;
     }
   } else {
-    // Not pilot
-    return (
-      <MikrofrontendLinkPanel
-        headingText="Snart slutt på sykepengene"
-        bodyText="Du må ta stilling til hva du skal gjøre i god tid før sykepengene tar slutt"
-        alertStyle="warning"
-        tag={{ variant: "warning-moderate", text: "Les mer om dine muligheter fremover" }}
-      />
-    );
+    return null;
   }
 }
 
