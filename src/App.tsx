@@ -50,7 +50,7 @@ function App() {
           return (
             <MikrofrontendLinkPanel
               headingText="Snart slutt på sykepengene"
-              bodyText="Du har svart at du ønsker oppfølging. Vi tar kontakt med deg."
+              bodyText="Du har svart at du ønsker oppfølging. Du får beskjed når vi har vurdert behovet ditt."
               alertStyle="info"
               tag={{ variant: "success-moderate", text: `Du svarte den ${responseDate.format(datePattern)}` }}
             />
