@@ -18,6 +18,9 @@ function App() {
   if (error) throw error;
 
   if (data) {
+    if (!data.hasAccessToSenOppfolging) {
+      return noMicroFrontend;
+    }
     if (data.responseStatus == "NO_RESPONSE") {
       const maxDateText =
         data.maxDate != null
