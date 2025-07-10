@@ -24,7 +24,7 @@
     "react-error-boundary": "^4.1.2",
     "styled-components": "^6.1.19",
     "swr": "2.3.4",
-    "zod": "^3.25.73"
+    "zod": "^4.0.2"
   },
   "devDependencies": {
     "@rollup/plugin-terser": "0.4.4",
