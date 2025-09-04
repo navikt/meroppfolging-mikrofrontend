@@ -1,4 +1,4 @@
-import { mount } from "cypress/react18";
+import { mount } from "cypress/react";
 import { SWRConfig } from "swr";
 import { SenOppfolgingStatusDTO } from "../../src/schema/senOppfolgingStatusSchema";
 

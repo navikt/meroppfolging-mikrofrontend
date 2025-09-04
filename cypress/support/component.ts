@@ -1,5 +1,5 @@
 import "./commands";
-import { mount, MountReturn } from "cypress/react18";
+import { mount, MountReturn } from "cypress/react";
 import { mountWithStubs, StubResponses } from "../utils/mountWithMocks";
 
 declare global {
