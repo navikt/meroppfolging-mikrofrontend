@@ -29,9 +29,9 @@ const SSPS_URL: EnvUrl = {
 };
 
 const MEROPPFOLGING_BACKEND_API_URL: EnvUrl = {
-  local: "http://localhost:3000/api/meroppfolging/v2/senoppfolging/status",
-  development: `https://www.intern.dev.nav.no/esyfo-proxy/api/meroppfolging/v2/senoppfolging/status`,
-  production: `https://www.nav.no/esyfo-proxy/api/meroppfolging/v2/senoppfolging/status`,
+  local: "http://localhost:3000/api/mikrofrontend/v1/status",
+  development: `https://www.intern.dev.nav.no/esyfo-proxy/api/mikrofrontend/v1/status`,
+  production: `https://www.nav.no/esyfo-proxy/api/mikrofrontend/v1/status`,
 };
 
 export const sspsUrl = SSPS_URL[getEnvironment()];
