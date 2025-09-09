@@ -7,7 +7,7 @@ export interface StubResponses {
 }
 
 export const mountWithStubs = (componentUnderTest: JSX.Element, stubResponses: StubResponses) => {
-  cy.intercept("/api/meroppfolging/v2/senoppfolging/status", stubResponses.merOppfolgingResponse).as(
+  cy.intercept("/api/meroppfolging/mikrofrontend/v1/status", stubResponses.merOppfolgingResponse).as(
     "hentMerOppfolgingStatus",
   );
 
