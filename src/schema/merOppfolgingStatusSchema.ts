@@ -10,14 +10,14 @@ const kartleggingResponseStatusType = z.union([z.literal("NO_RESPONSE"), z.liter
 
 const senOppfolgingStatusSchema = z.object({
   responseStatus: responseStatusType,
-  responseTime: z.string().nullish(),
+  responseDateTime: z.string().nullish(),
   hasAccessToSenOppfolging: z.boolean(),
   maxDate: z.string().nullish(),
 });
 
 const kartleggingStatusSchema = z.object({
   responseStatus: kartleggingResponseStatusType,
-  responseTime: z.string().nullish(),
+  responseDateTime: z.string().nullish(),
   hasAccessToKartlegging: z.boolean(),
 });
 

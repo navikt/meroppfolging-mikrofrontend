@@ -26,12 +26,12 @@ export const SenOppfolging = ({ status }: Props) => {
       />
     );
   } else {
-    if (!status.responseTime) {
+    if (!status.responseDateTime) {
       return <></>;
     }
 
     dayjs.extend(customParseFormat);
-    const responseDate = dayjs(status.responseTime, datePattern);
+    const responseDate = dayjs(status.responseDateTime, datePattern);
     const oneWeekAgo = dayjs().subtract(1, "week");
 
     const isResponseDateLessThanAWeekAgo = oneWeekAgo.isBefore(responseDate);

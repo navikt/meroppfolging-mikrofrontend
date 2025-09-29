@@ -18,7 +18,7 @@ export function createNeedsHelpResponse(date: string = formatDate(dayjs())): Sen
     senOppfolgingStatus: {
       responseStatus: "TRENGER_OPPFOLGING",
       hasAccessToSenOppfolging: true,
-      responseTime: date,
+      responseDateTime: date,
       maxDate: null,
     },
   };
@@ -30,7 +30,7 @@ export function createDoesntNeedHelpResponse(date: string = formatDate(dayjs()))
     senOppfolgingStatus: {
       responseStatus: "TRENGER_IKKE_OPPFOLGING",
       hasAccessToSenOppfolging: true,
-      responseTime: date,
+      responseDateTime: date,
       maxDate: null,
     },
   };
@@ -43,7 +43,7 @@ export function createOutdatedResponse(): SenOppfolgingResponse {
     senOppfolgingStatus: {
       responseStatus: "TRENGER_IKKE_OPPFOLGING",
       hasAccessToSenOppfolging: true,
-      responseTime: oldDate,
+      responseDateTime: oldDate,
       maxDate: null,
     },
   };
@@ -55,7 +55,7 @@ export function createNoResponse(opts: { maxDate: string | null }): SenOppfolgin
     senOppfolgingStatus: {
       responseStatus: "NO_RESPONSE",
       hasAccessToSenOppfolging: true,
-      responseTime: null,
+      responseDateTime: null,
       maxDate: opts.maxDate,
     },
   };
@@ -71,7 +71,7 @@ export function createKartleggingsspormalResponse(
     kartleggingStatus: {
       responseStatus: submitted ? "SUBMITTED" : "NO_RESPONSE",
       hasAccessToKartlegging: hasAccess,
-      responseTime: submitted ? date : null,
+      responseDateTime: submitted ? date : null,
     },
   };
 }

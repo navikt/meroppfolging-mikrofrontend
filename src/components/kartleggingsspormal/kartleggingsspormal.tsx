@@ -10,7 +10,7 @@ interface KartleggingsspormalProps {
 export const Kartleggingsspormal = ({ kartleggingStatus }: KartleggingsspormalProps): ReactElement => {
   if (kartleggingStatus.responseStatus === "SUBMITTED") {
     const datePattern = "DD.MM.YYYY";
-    const responseDate = dayjs(kartleggingStatus.responseTime, datePattern);
+    const responseDate = dayjs(kartleggingStatus.responseDateTime, datePattern);
 
     return (
       <MikrofrontendLinkPanel

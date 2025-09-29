@@ -21,7 +21,7 @@ describe("App", () => {
       mountWithResponse(response);
       cy.contains("Snart slutt på sykepengene");
       cy.contains("Du har svart at du ønsker oppfølging");
-      cy.contains(response.senOppfolgingStatus.responseTime!);
+      cy.contains(response.senOppfolgingStatus.responseDateTime!);
     });
 
     it("Displays doesnt need help content", () => {
@@ -29,7 +29,7 @@ describe("App", () => {
       mountWithResponse(response);
       cy.contains("Snart slutt på sykepengene");
       cy.contains("Du har svart at du ikke trenger oppfølging nå.");
-      cy.contains(response.senOppfolgingStatus.responseTime!);
+      cy.contains(response.senOppfolgingStatus.responseDateTime!);
     });
 
     it("Hides panel for outdated response", () => {
