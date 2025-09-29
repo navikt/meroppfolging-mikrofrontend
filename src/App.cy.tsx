@@ -16,7 +16,7 @@ const mountWithResponse = (response: MerOppfolgingStatusDTO) => {
 
 describe("App", () => {
   describe("Sen oppfølging", () => {
-    it("Displays needs help content", () => {
+    it("Displays needs help content if user responded needs help", () => {
       const response = createNeedsHelpResponse();
       mountWithResponse(response);
       cy.contains("Snart slutt på sykepengene");
@@ -24,7 +24,7 @@ describe("App", () => {
       cy.contains(response.senOppfolgingStatus.responseDateTime!);
     });
 
-    it("Displays doesnt need help content", () => {
+    it("Displays doesnt need help content if user responded doesnt need help", () => {
       const response = createDoesntNeedHelpResponse();
       mountWithResponse(response);
       cy.contains("Snart slutt på sykepengene");
@@ -38,16 +38,17 @@ describe("App", () => {
       cy.contains("Snart slutt på sykepengene").should("not.exist");
     });
 
-    it("Asks user to respond with maxdate", () => {
+    it("Asks user to respond, and displays maxdate", () => {
       const response = createNoResponse({ maxDate: "31. desember 2024" });
       mountWithResponse(response);
       cy.contains("31. desember 2024 er din siste dag med sykepenger.");
     });
 
-    it("Asks user to respond without maxdate", () => {
+    it("Asks user to respond, and hides maxdate view if it doesnt exist", () => {
       const response = createNoResponse({ maxDate: null });
       mountWithResponse(response);
       cy.contains("Det nærmer seg siste dag du kan motta sykepenger.");
+      cy.contains("din siste dag med sykepenger").should("not.exist");
     });
   });
 
