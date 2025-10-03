@@ -56,7 +56,7 @@ describe("App", () => {
     it("Renders kartleggingsspørsmål view", () => {
       const response = createKartleggingsspormalResponse(false, true);
       mountWithResponse(response);
-      cy.contains("Kartlegging av oppfølgingsbehov");
+      cy.contains("Kartlegging av din situasjon");
     });
   });
 });

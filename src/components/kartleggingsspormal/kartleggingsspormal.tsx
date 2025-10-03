@@ -14,8 +14,8 @@ export const Kartleggingsspormal = ({ kartleggingStatus }: KartleggingsspormalPr
 
     return (
       <MikrofrontendLinkPanel
-        headingText="Kartlegging av oppfølgingsbehov"
-        bodyText="Du har sendt inn svar om din situasjon til ditt Nav-kontor."
+        headingText="Kartlegging av din situasjon"
+        bodyText="Se svarene du har sendt til Nav."
         alertStyle="info"
         tag={{ variant: "success-moderate", text: `Du svarte den ${responseDate.format(datePattern)}` }}
       />
@@ -24,8 +24,8 @@ export const Kartleggingsspormal = ({ kartleggingStatus }: KartleggingsspormalPr
 
   return (
     <MikrofrontendLinkPanel
-      headingText="Kartlegging av oppfølgingsbehov"
-      bodyText="Vi ber deg svare på tre korte spørsmål om din situasjon."
+      headingText="Kartlegging av din situasjon"
+      bodyText="Vi ber deg svare på tre spørsmål om ditt sykefravær."
       alertStyle="info"
       tag={{ variant: "warning-moderate", text: "Du har ikke svart" }}
     />
