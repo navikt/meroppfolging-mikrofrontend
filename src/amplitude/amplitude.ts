@@ -1,5 +1,5 @@
 import { logAmplitudeEvent } from "@navikt/nav-dekoratoren-moduler";
-import { sspsUrl, getEnvironment } from "../api/urls";
+import { getEnvironment } from "../api/urls";
 
 function wait(ms: number) {
   return new Promise((_, reject) => {
@@ -7,7 +7,7 @@ function wait(ms: number) {
   });
 }
 
-export const logAndNavigate = async (event: string, data?: Record<string, string>) => {
+export const logAndNavigate = async (url: string, event: string, data?: Record<string, string>) => {
   if (getEnvironment() === "local") {
     console.log("Amplitude event: " + event);
     if (data) {
@@ -26,7 +26,7 @@ export const logAndNavigate = async (event: string, data?: Record<string, string
     } catch (err) {
       console.log(err);
     } finally {
-      window.location.href = sspsUrl;
+      window.location.href = url;
     }
   }
 };

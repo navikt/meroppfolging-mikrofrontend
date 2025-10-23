@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import React from "react";
 import { SenOppfolgingStatusDTO } from "../../schema/merOppfolgingStatusSchema";
+import { sspsUrl } from "../../api/urls";
 
 interface Props {
   status: SenOppfolgingStatusDTO;
@@ -19,6 +20,7 @@ export const SenOppfolging = ({ status }: Props) => {
 
     return (
       <MikrofrontendLinkPanel
+        url={sspsUrl}
         headingText="Snart slutt på sykepengene"
         bodyText={`${maxDateText} Vi ber deg derfor vurdere situasjonen din.`}
         alertStyle="info"
@@ -40,6 +42,7 @@ export const SenOppfolging = ({ status }: Props) => {
       if (status.responseStatus === "TRENGER_OPPFOLGING") {
         return (
           <MikrofrontendLinkPanel
+            url={sspsUrl}
             headingText="Snart slutt på sykepengene"
             bodyText="Du har svart at du ønsker oppfølging. Du får beskjed når vi har vurdert behovet ditt."
             alertStyle="info"
@@ -49,6 +52,7 @@ export const SenOppfolging = ({ status }: Props) => {
       } else if (status.responseStatus === "TRENGER_IKKE_OPPFOLGING") {
         return (
           <MikrofrontendLinkPanel
+            url={sspsUrl}
             headingText="Snart slutt på sykepengene"
             bodyText="Du har svart at du ikke trenger oppfølging nå. Ta kontakt hvis situasjonen din endrer seg."
             alertStyle="info"

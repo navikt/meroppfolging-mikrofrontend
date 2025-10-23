@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 import { MikrofrontendLinkPanel } from "../panels/MikrofrontendLinkPanel";
 import dayjs from "dayjs";
 import { KartleggingStatusDTO } from "../../schema/merOppfolgingStatusSchema";
+import { karleggingUrl } from "../../api/urls";
 
 interface KartleggingsspormalProps {
   kartleggingStatus: KartleggingStatusDTO;
@@ -14,6 +15,7 @@ export const Kartleggingsspormal = ({ kartleggingStatus }: KartleggingsspormalPr
 
     return (
       <MikrofrontendLinkPanel
+        url={karleggingUrl}
         headingText="Kartlegging av din situasjon"
         bodyText="Se svarene du har sendt til Nav."
         alertStyle="info"
@@ -24,6 +26,7 @@ export const Kartleggingsspormal = ({ kartleggingStatus }: KartleggingsspormalPr
 
   return (
     <MikrofrontendLinkPanel
+      url={karleggingUrl}
       headingText="Kartlegging av din situasjon"
       bodyText="Vi ber deg svare på tre spørsmål om ditt sykefravær."
       alertStyle="info"
