@@ -1,8 +1,8 @@
 import { http, HttpResponse } from "msw";
-import { createNoResponse } from "./fixtures/factories/senoppfolging";
+import { scenarios } from "./fixtures/factories/meroppfolging";
 
 export const handlers = [
-  http.get("api/meroppfolging/v2/senoppfolging/status", () => {
-    return HttpResponse.json(createNoResponse());
+  http.get("api/mikrofrontend/v1/status", () => {
+    return HttpResponse.json(scenarios.kartlegging_not_responded());
   }),
 ];

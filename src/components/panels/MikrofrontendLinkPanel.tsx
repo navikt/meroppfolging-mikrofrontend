@@ -26,12 +26,13 @@ interface Props {
   headingText: string;
   alertStyle: "info" | "success" | "warning" | "error";
   bodyText: string;
+  url: string;
   tag?: TagMeta;
 }
 
-export const MikrofrontendLinkPanel = ({ headingText, alertStyle, bodyText, tag }: Props) => {
+export const MikrofrontendLinkPanel = ({ headingText, alertStyle, bodyText, url, tag }: Props) => {
   return (
-    <ChevronPanel id="mikrofrontend__linkPanel" onClick={() => logAndNavigate("navigere")}>
+    <ChevronPanel id="mikrofrontend__linkPanel" onClick={() => logAndNavigate(url, "navigere")}>
       <HeadingRow>
         <HeadingSpacing size={"small"} level={"2"} className="mikrofrontend-linkpanel__title">
           {headingText}
