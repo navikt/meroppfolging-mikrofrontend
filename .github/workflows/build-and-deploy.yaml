@@ -14,4 +14,4 @@ jobs:
     with:
       app: meroppfolging-mikrofrontend
       id: syfo-meroppfolging
-      node-version: "18.19.1"
+      node-version: "18.18.2"
