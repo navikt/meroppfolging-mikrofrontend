@@ -9,6 +9,7 @@ import {
   createOutdatedResponse,
 } from "./mocks/fixtures/factories/meroppfolging";
 import { MerOppfolgingStatusDTO } from "./schema/merOppfolgingStatusSchema";
+import dayjs from "dayjs";
 
 const mountWithResponse = (response: MerOppfolgingStatusDTO) => {
   cy.mountWithStubs(<App />, { merOppfolgingResponse: response });
@@ -21,7 +22,9 @@ describe("App", () => {
       mountWithResponse(response);
       cy.contains("Snart slutt på sykepengene");
       cy.contains("Du har svart at du ønsker oppfølging");
-      cy.contains(response.senOppfolgingStatus.responseDateTime!);
+
+      const expectedDate = dayjs(response.senOppfolgingStatus.responseDateTime!).format("DD.MM.YYYY");
+      cy.contains(`Du svarte den ${expectedDate}`);
     });
 
     it("Displays doesnt need help content if user responded doesnt need help", () => {
@@ -29,7 +32,9 @@ describe("App", () => {
       mountWithResponse(response);
       cy.contains("Snart slutt på sykepengene");
       cy.contains("Du har svart at du ikke trenger oppfølging nå.");
-      cy.contains(response.senOppfolgingStatus.responseDateTime!);
+
+      const expectedDate = dayjs(response.senOppfolgingStatus.responseDateTime!).format("DD.MM.YYYY");
+      cy.contains(expectedDate);
     });
 
     it("Hides panel for outdated response", () => {
