@@ -1,6 +1,5 @@
 import { MikrofrontendLinkPanel } from "../panels/MikrofrontendLinkPanel";
 import dayjs from "dayjs";
-import customParseFormat from "dayjs/plugin/customParseFormat";
 import React from "react";
 import { SenOppfolgingStatusDTO } from "../../schema/merOppfolgingStatusSchema";
 import { sspsUrl } from "../../api/urls";
@@ -32,8 +31,7 @@ export const SenOppfolging = ({ status }: Props) => {
       return <></>;
     }
 
-    dayjs.extend(customParseFormat);
-    const responseDate = dayjs(status.responseDateTime, datePattern);
+    const responseDate = dayjs(status.responseDateTime);
     const oneWeekAgo = dayjs().subtract(1, "week");
 
     const isResponseDateLessThanAWeekAgo = oneWeekAgo.isBefore(responseDate);
