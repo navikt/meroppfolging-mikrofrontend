@@ -12,7 +12,7 @@ function formatDate(d: dayjs.Dayjs) {
   return d.format(DATE_FORMAT);
 }
 
-export function createNeedsHelpResponse(date: string = formatDate(dayjs())): SenOppfolgingResponse {
+export function createNeedsHelpResponse(date: string = new Date().toISOString()): SenOppfolgingResponse {
   return {
     oppfolgingsType: "SEN_OPPFOLGING",
     senOppfolgingStatus: {
@@ -24,7 +24,7 @@ export function createNeedsHelpResponse(date: string = formatDate(dayjs())): Sen
   };
 }
 
-export function createDoesntNeedHelpResponse(date: string = formatDate(dayjs())): SenOppfolgingResponse {
+export function createDoesntNeedHelpResponse(date: string = new Date().toISOString()): SenOppfolgingResponse {
   return {
     oppfolgingsType: "SEN_OPPFOLGING",
     senOppfolgingStatus: {
@@ -37,7 +37,7 @@ export function createDoesntNeedHelpResponse(date: string = formatDate(dayjs()))
 }
 
 export function createOutdatedResponse(): SenOppfolgingResponse {
-  const oldDate = formatDate(dayjs().subtract(180, "day"));
+  const oldDate = new Date().toISOString();
   return {
     oppfolgingsType: "SEN_OPPFOLGING",
     senOppfolgingStatus: {
